@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'home/index'
+  get 'home/privacy'
+  get 'home/tmdb'
+  get 'homepage/index'
+  get 'homepage/privacy'
+  get 'homepage/tmdb'
   resources :friendships
   resources :reviews
   resources :viewings
