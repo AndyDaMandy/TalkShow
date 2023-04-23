@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @viewing %>
+
+<div>
+  <%= link_to "Edit this viewing", edit_viewing_path(@viewing) %> |
+  <%= link_to "Back to viewings", viewings_path %>
+
+  <%= button_to "Destroy this viewing", @viewing, method: :delete %>
+</div>

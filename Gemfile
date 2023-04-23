@@ -30,10 +30,14 @@ gem "cssbundling-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+#for testing
 gem 'rspec-rails', '~> 6.0.0'
 
+#for user auth
 gem 'devise'
 
+#for APIs
+gem 'faraday'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

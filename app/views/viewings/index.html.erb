@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Viewings</h1>
+
+<div id="viewings">
+  <% @viewings.each do |viewing| %>
+    <%= render viewing %>
+    <p>
+      <%= link_to "Show this viewing", viewing %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New viewing", new_viewing_path %>
