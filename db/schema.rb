@@ -10,9 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_23_010203) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_23_175631) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer "status"
+    t.bigint "user_id", null: false
+    t.integer "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_friendships_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.integer "recommend"
+    t.string "headline"
+    t.text "content"
+    t.bigint "viewing_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "show_id"
+    t.integer "movie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.index ["viewing_id"], name: "index_reviews_on_viewing_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -43,5 +67,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_23_010203) do
     t.index ["user_id"], name: "index_viewings_on_user_id"
   end
 
+  add_foreign_key "friendships", "users"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "reviews", "viewings"
   add_foreign_key "viewings", "users"
 end
