@@ -7,22 +7,8 @@ class ShowsController < ApplicationController
   end
 
   def search
-    response = OmdbApiService.find_tv_show(params[:title])
+    response = TmdbService.find_tv_show(params[:title])
 
-    if response['Response'] == 'True'
-      tv_show = TvShow.find_or_create_by(
-        title: response['Title'],
-        imdb_id: response['imdbID'],
-        year: response['Year'].to_i,
-        plot: response['Plot'],
-        poster_url: response['Poster']
-      )
-      redirect_to tv_show_path(tv_show)
-    else
-      flash[:alert] = "TV Show not found"
-      redirect_to tv_shows_path
-    end
-  end
   # GET /shows/1 or /shows/1.json
   def show
   end
@@ -30,6 +16,9 @@ class ShowsController < ApplicationController
   # GET /shows/new
   def new
     @show = Show.new
+    hash = TmdbService.new
+    data = hash.get_show_by_title(query)
+    result = data[0]
   end
 
   # GET /shows/1/edit
@@ -38,7 +27,20 @@ class ShowsController < ApplicationController
 
   # POST /shows or /shows.json
   def create
-    @show = Show.new(show_params)
+    #hash = TmdbService.new
+    #data = hash.get_show_by_title(query)
+    #result = data[0]
+    @show = Show.new(
+                    name: result["name"],
+                    original_name: result["original_name"],
+                    original_language
+                    tmdb_id: result["id"],
+                    origin_country: result["origin_country"],
+                    overview: result["overview"],
+                    poster_path: result["poster_path"],
+                    vote_average: result["vote_average"],
+                    first_air_date: result["first_air_date"]
+    )
 
     respond_to do |format|
       if @show.save

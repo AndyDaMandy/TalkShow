@@ -1,7 +1,7 @@
 class CreateShows < ActiveRecord::Migration[7.0]
   def change
     create_table :shows do |t|
-      t.string :tmdb_id
+      t.integer :tmdb_id
       t.string :origin_country
       t.string :original_language
       t.string :original_name
