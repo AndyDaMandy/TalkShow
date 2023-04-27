@@ -12,23 +12,25 @@
   <% end %>
 
   <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.number_field :status %>
+    <%= form.label :status, "Not Started", style: "display: block" %>
+    <%= form.radio_button :status, 'not_started' %>
+  </div>
+  <div>
+    <%= form.label :status, "Watching", style: "display: block" %>
+    <%= form.radio_button :status, 'watching' %>
+  </div>
+  <div>
+    <%= form.label :status, "On Hold", style: "display: block" %>
+    <%= form.radio_button :status, 'on_hold' %>
+  </div>
+  <div>
+    <%= form.label :status, "Finished", style: "display: block" %>
+    <%= form.radio_button :status, 'finished' %>
   </div>
 
   <div>
     <%= form.label :note, style: "display: block" %>
     <%= form.text_area :note %>
-  </div>
-
-  <div>
-    <%= form.label :movie_id, style: "display: block" %>
-    <%= form.text_field :movie_id %>
-  </div>
-
-  <div>
-    <%= form.label :tv_id, style: "display: block" %>
-    <%= form.text_field :tv_id %>
   </div>
 
   <div>
@@ -39,11 +41,6 @@
   <div>
     <%= form.label :progress, style: "display: block" %>
     <%= form.number_field :progress %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
   </div>
 
   <div>

@@ -22,6 +22,7 @@ class ViewingsController < ApplicationController
   # POST /viewings or /viewings.json
   def create
     @viewing = Viewing.new(viewing_params)
+    @viewing.user = current_user
 
     respond_to do |format|
       if @viewing.save
