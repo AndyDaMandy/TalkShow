@@ -8,6 +8,7 @@ class TmdbService
         if response.status == 200
             result = JSON.parse(response.body)['results']
             return result
+            #return response
         else
             return nil
         end
