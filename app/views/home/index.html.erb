@@ -22,11 +22,14 @@
             <%= image_tag("https://image.tmdb.org/t/p/w500/#{data['poster_path']}")%>
             <li>Name: <%= data['name']%> </li>
             <li> Original Language: <%= data['original_language'] %> </li>
-            <li>  Original Name: <%= data['original_name']%> </li>   
-            <li> Overview: <%= data['overview']%></li>
+            <li>Original Name: <%= data['original_name']%> </li>   
+            <li>Created by:  <%# data['created_by']['name'] %></li>
+            <li>Overview: <%= data['overview']%></li>
+            <li>Episode Run Time: <%= data['episode_run_time']%></li>S
+            <li>Seasons: <%= data['number_of_seasons']%></li>
             <li> First Air Date: <%= data['first_air_date'] %></li>
         </ul>
-        <%= link_to "New viewing", new_viewing_path(params[:show_id] => data['id']) %>
+        <%# link_to "New viewing", new_viewing_path(params[:show_id] => data['id']) %>
         <%# link_to new_viewing_path(data['id'])%>
     </div>
     <% end %>

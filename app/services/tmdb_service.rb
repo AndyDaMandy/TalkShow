@@ -26,7 +26,7 @@ class TmdbService
     end
 
     def get_show_by_id(query)
-        response = Faraday.get("https://api.themoviedb.org/3/tv/#{query}api_key=#{ENV['TMDB_KEY']}")
+        response = Faraday.get("https://api.themoviedb.org/3/tv/#{query}?api_key=#{ENV['TMDB_KEY']}")
         if response.status == 200
             result = JSON.parse(response.body)['results']
             return result
