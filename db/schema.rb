@@ -30,8 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_27_184130) do
     t.text "content"
     t.bigint "viewing_id", null: false
     t.bigint "user_id", null: false
-    t.integer "show_id"
-    t.integer "movie_id"
+    t.integer "tmdb_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_reviews_on_user_id"
@@ -40,13 +39,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_27_184130) do
 
   create_table "shows", force: :cascade do |t|
     t.integer "tmdb_id"
-    t.string "origin_country"
-    t.string "original_language"
-    t.string "original_name"
-    t.string "overview"
-    t.string "poster_path"
-    t.string "first_air_date"
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -54,6 +46,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_27_184130) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "username", default: "", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "words_to_live_by"
+    t.integer "age"
+    t.string "location"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -65,13 +63,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_27_184130) do
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   create_table "viewings", force: :cascade do |t|
     t.integer "status", default: 0
     t.text "note"
-    t.string "movie_id"
-    t.string "tv_id"
+    t.integer "tmdb_id"
     t.string "name"
     t.integer "progress", default: 0
     t.bigint "user_id", null: false

@@ -13,6 +13,11 @@ class ViewingsController < ApplicationController
   # GET /viewings/new
   def new
     @viewing = Viewing.new
+    #@tmdb_data = params[:tmdb_id]
+
+    @show = Show.find_or_create_by!(tmdb_id: params[:tmdb_id].to_i)
+    #@show = Show.where(tmdb_id: params[:tmdb_id].to_i).first
+    
   end
 
   # GET /viewings/1/edit
@@ -21,8 +26,12 @@ class ViewingsController < ApplicationController
 
   # POST /viewings or /viewings.json
   def create
+    id = params[:tmdb_id].to_i
+    #@show = Show.where(tmdb_id: params[:tmdb_id].to_i).first
     @viewing = Viewing.new(viewing_params)
+    @viewing.tmdb_id = id
     @viewing.user = current_user
+    
 
     respond_to do |format|
       if @viewing.save
@@ -66,6 +75,6 @@ class ViewingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def viewing_params
-      params.require(:viewing).permit(:status, :note, :movie_id, :tv_id, :name, :progress, :user_id)
+      params.require(:viewing).permit(:status, :note, :tmdb_id, :name, :progress, :user_id)
     end
 end

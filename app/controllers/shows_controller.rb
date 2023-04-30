@@ -15,10 +15,12 @@ class ShowsController < ApplicationController
 
   # GET /shows/new
   def new
+=begin
     @show = Show.new
     hash = TmdbService.new
     data = hash.get_show_by_title(query)
     result = data[0]
+=end
   end
 
   # GET /shows/1/edit
@@ -30,6 +32,7 @@ class ShowsController < ApplicationController
     #hash = TmdbService.new
     #data = hash.get_show_by_title(query)
     #result = data[0]
+=begin
     @show = Show.new(
                     name: result["name"],
                     original_name: result["original_name"],
@@ -41,6 +44,7 @@ class ShowsController < ApplicationController
                     vote_average: result["vote_average"],
                     first_air_date: result["first_air_date"]
     )
+=end
 
     respond_to do |format|
       if @show.save
@@ -84,6 +88,6 @@ class ShowsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def show_params
-      params.require(:show).permit(:tmdb_id, :origin_country, :original_language, :original_name, :overview, :poster_path, :first_air_date, :name)
+      params.require(:show).permit(:tmdb_id)
     end
 end

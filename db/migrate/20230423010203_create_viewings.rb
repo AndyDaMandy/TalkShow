@@ -3,8 +3,7 @@ class CreateViewings < ActiveRecord::Migration[7.0]
     create_table :viewings do |t|
       t.integer :status, default: 0
       t.text :note
-      t.string :movie_id
-      t.string :tv_id
+      t.integer :tmdb_id
       t.string :name
       t.integer :progress, default: 0
       t.references :user, null: false, foreign_key: true
