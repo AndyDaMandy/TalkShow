@@ -5,10 +5,7 @@ class HomeController < ApplicationController
     #  search = params[:search]
     hash = TmdbService.new
     @data = hash.get_show_by_title(params[:search])
-    
-     # response = Faraday.get("https://api.themoviedb.org/3/search/tv?api_key=#{ENV['TMDB_KEY']}&#{search}&language=en-US&page=1&include_adult=false")
-      #response = response.body
-      #data = JSON.parse(response)
+    #if response body 1== @data = "thi doesn't work"
     end
   end
 

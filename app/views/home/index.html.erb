@@ -14,19 +14,20 @@
     <%= form.submit "Search" %>
 <% end %>
 
-
 <% if params[:search] %>
     <% @data.each do |data| %>
     <div>
-        <ul>
-        <%# data %>
-        <%= image_tag("https://image.tmdb.org/t/p/w500/#{data['poster_path']}")%>
-        <li>Name: <%= data['name']%> </li>
-       <li> Original Language: <%= data['original_language'] %> </li>
-      <li>  Original Name: <%= data['original_name']%> </li>   
-       <li> Overview: <%= data['overview']%></li>
-      <li> First Air Date: <%= data['first_air_date'] %></li>
+        <ul id=<%= data['id'] %>>
+            <%# data %>
+            <%= image_tag("https://image.tmdb.org/t/p/w500/#{data['poster_path']}")%>
+            <li>Name: <%= data['name']%> </li>
+            <li> Original Language: <%= data['original_language'] %> </li>
+            <li>  Original Name: <%= data['original_name']%> </li>   
+            <li> Overview: <%= data['overview']%></li>
+            <li> First Air Date: <%= data['first_air_date'] %></li>
         </ul>
+        <%= link_to "New viewing", new_viewing_path(params[:show_id] => data['id']) %>
+        <%# link_to new_viewing_path(data['id'])%>
     </div>
     <% end %>
 <% end %>
