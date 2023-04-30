@@ -27,7 +27,7 @@
             <li>Overview: <%= data['overview']%></li>
             <li> First Air Date: <%= data['first_air_date'] %></li>
         </ul>
-        <%= link_to "New viewing", new_viewing_path(tmdb_id: data['id'].to_i) %>
+        <%= link_to "New viewing", new_viewing_path(tmdb_id: data['id'].to_i, original_name: data['original_name'], original_language: data['original_language'], name: data['name'], poster_path: data['poster_path']) %>
         <%# link_to new_viewing_path(data['id'])%>
     </div>
     <% end %>

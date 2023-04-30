@@ -1,5 +1,6 @@
 class ViewingsController < ApplicationController
   before_action :set_viewing, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new create edit update destroy ]
 
   # GET /viewings or /viewings.json
   def index
@@ -8,7 +9,7 @@ class ViewingsController < ApplicationController
 
   # GET /viewings/1 or /viewings/1.json
   def show
-    #@show = Show.where(tmdb_id: @viewing.tmdb_id).first
+    @show = Show.where(tmdb_id: @viewing.tmdb_id).first
     hash = TmdbService.new
     @data = hash.get_show_by_id(@viewing.tmdb_id)
   end
@@ -18,7 +19,7 @@ class ViewingsController < ApplicationController
     @viewing = Viewing.new
     #@tmdb_data = params[:tmdb_id]
 
-    @show = Show.find_or_create_by!(tmdb_id: params[:tmdb_id].to_i)
+    @show = Show.find_or_create_by!(tmdb_id: params[:tmdb_id].to_i, original_name: params[:original_name], original_language: params[:original_language], name: params[:name], poster_path: params[:poster_path])
     #@show = Show.where(tmdb_id: params[:tmdb_id].to_i).first
     
   end
