@@ -38,7 +38,7 @@
     <%= form.text_field :name %>
   </div>
   <div>
-    <%# form.hidden_field :tmdb_id, :tmdb_id => params[:tmdb_id].to_i %>
+    <%= form.hidden_field :tmdb_id, value: @show.tmdb_id %>
   </div>
 
   <div>

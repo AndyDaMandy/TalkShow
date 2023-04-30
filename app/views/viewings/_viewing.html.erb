@@ -1,4 +1,20 @@
 <div id="<%= dom_id viewing %>">
+  <% if controller_name == "show" %>
+    <div>
+        <ul id=<%= @data['id'].to_s %>>
+            <%# data %>
+            <%= image_tag("https://image.tmdb.org/t/p/w500/#{@data['poster_path']}")%>
+            <li>Name: <%= @data['name']%> </li>
+            <li> Original Language: <%= @data['original_language'] %> </li>
+            <li>Original Name: <%= @data['original_name']%> </li>   
+            <li>Created by:  <%= data['created_by']['name'] %></li>
+            <li>Overview: <%= data['overview']%></li>
+            <li> First Air Date: <%= data['first_air_date'] %></li>
+        </ul>
+        <%= link_to "New viewing", new_viewing_path(tmdb_id: data['id'].to_i) %>
+        <%# link_to new_viewing_path(data['id'])%>
+    </div>
+  <% end %>
   <p>
     <strong>Status:</strong>
     <%= viewing.status %>

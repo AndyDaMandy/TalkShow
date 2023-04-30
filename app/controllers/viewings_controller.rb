@@ -8,6 +8,9 @@ class ViewingsController < ApplicationController
 
   # GET /viewings/1 or /viewings/1.json
   def show
+    #@show = Show.where(tmdb_id: @viewing.tmdb_id).first
+    hash = TmdbService.new
+    @data = hash.get_show_by_id(@viewing.tmdb_id)
   end
 
   # GET /viewings/new
@@ -26,11 +29,9 @@ class ViewingsController < ApplicationController
 
   # POST /viewings or /viewings.json
   def create
-    id = params[:tmdb_id].to_i
-    #@show = Show.where(tmdb_id: params[:tmdb_id].to_i).first
     @viewing = Viewing.new(viewing_params)
-    @viewing.tmdb_id = id
     @viewing.user = current_user
+    #tmdb id gets passed in the view for now as a part of viewing_params. Refactor later
     
 
     respond_to do |format|
