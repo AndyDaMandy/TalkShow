@@ -19,7 +19,7 @@ class ViewingsController < ApplicationController
     @viewing = Viewing.new
     #@tmdb_data = params[:tmdb_id]
 
-    @show = Show.find_or_create_by!(tmdb_id: params[:tmdb_id].to_i, original_name: params[:original_name], original_language: params[:original_language], name: params[:name], poster_path: params[:poster_path])
+    @show = Show.find_or_create_by!(tmdb_id: params[:tmdb_id].to_i, original_name: params[:original_name], original_language: params[:original_language], name: params[:name], poster_path: params[:poster_path], overview: params[:overview])
     #@show = Show.where(tmdb_id: params[:tmdb_id].to_i).first
     
   end

@@ -1,10 +1,12 @@
 <p style="color: green"><%= notice %></p>
-
+<div>
+  <%= link_to "Back to viewings", viewings_path %>
+</div>
 <%= render @viewing %>
 
+<% if user_signed_in? && @viewing.user == current_user %>
 <div>
   <%= link_to "Edit this viewing", edit_viewing_path(@viewing) %> |
-  <%= link_to "Back to viewings", viewings_path %>
-
   <%= button_to "Destroy this viewing", @viewing, method: :delete %>
 </div>
+<% end %>

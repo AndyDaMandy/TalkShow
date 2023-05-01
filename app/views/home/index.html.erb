@@ -8,27 +8,30 @@
     overview: result["overview"],
     poster_path: result["poster_path"],
     first_air_date: result["first_air_date"] -->
+<div class="mb-5">
 <%= form_with url: home_index_url, method: :get do |form| %>
-    <%= form.label :search, "Search for shows:" %>
-    <%= form.text_field :search %>
+    <%= form.label :search, "Search for shows:", class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
+    <%= form.text_field :search, class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
     <%= form.submit "Search" %>
 <% end %>
+</div>
 
 <% if params[:search] %>
+    <turbo_frame id="show-data">
     <% @data.each do |data| %>
-    <div>
+    <div class="mb-3">
         <ul id=<%= data['id'] %>>
             <%# data %>
-            <%= image_tag("https://image.tmdb.org/t/p/w500/#{data['poster_path']}")%>
+            <%= image_tag("https://image.tmdb.org/t/p/w500/#{data['poster_path']}", class: "object-contain h-80 w-120")%>
             <li>Name: <%= data['name']%> </li>
             <li> Original Language: <%= data['original_language'] %> </li>
             <li>Original Name: <%= data['original_name']%> </li>   
-            <li>Created by:  <%# data['created_by']['name'] %></li>
             <li>Overview: <%= data['overview']%></li>
             <li> First Air Date: <%= data['first_air_date'] %></li>
         </ul>
-        <%= link_to "New viewing", new_viewing_path(tmdb_id: data['id'].to_i, original_name: data['original_name'], original_language: data['original_language'], name: data['name'], poster_path: data['poster_path']) %>
+        <%= link_to "New viewing", new_viewing_path(tmdb_id: data['id'].to_i, original_name: data['original_name'], original_language: data['original_language'], name: data['name'], poster_path: data['poster_path'], overview: data['overview']), class: "inline-block text-sm px-4 py-2 leading-none border rounded border-amber-900 hover:border-transparent hover:bg-white mt-4 lg:mt-0 text-amber-900 hover:text-amber-950" %>
         <%# link_to new_viewing_path(data['id'])%>
     </div>
     <% end %>
+    </turbo_frame>
 <% end %>

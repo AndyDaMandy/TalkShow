@@ -42,6 +42,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_27_184130) do
     t.string "original_name"
     t.string "original_language"
     t.string "name"
+    t.string "overview"
     t.string "poster_path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

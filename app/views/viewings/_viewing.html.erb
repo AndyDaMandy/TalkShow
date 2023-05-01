@@ -4,13 +4,11 @@
         <% @show = Show.where(tmdb_id: viewing.tmdb_id).first %>
         <% @user = User.find(viewing.user_id) %>
             <%# data %>
-            <%= image_tag("https://image.tmdb.org/t/p/w500/#{@show.poster_path}")%>
+            <%= image_tag("https://image.tmdb.org/t/p/w500/#{@show.poster_path}", class: "object-contain h-80 w-120")%>
             <li>Name: <%= @show.name%> </li>
             <li> Original Language: <%= @show.original_language %> </li>
-            <li>Original Name: <%= @show.original_name %> </li>   
-            <li>Created by:  <%# data['created_by']['name'] %></li>
-            <li>Overview: <%# ['overview']%></li>
-            <li> First Air Date: <%# data['first_air_date'] %></li>
+            <li>Original Name: <%= @show.original_name %> </li>
+            <li>Overview: </li> 
         </ul>
         <%# link_to "New viewing", new_viewing_path(tmdb_id: data['id'].to_i) %>
         <%# link_to new_viewing_path(data['id'])%>
@@ -23,7 +21,7 @@
     <strong>User:</strong>
     <%= @user.first_name %> <%= @user.last_name %>
   </p>
-<% if user_signed_in? && current_user %>
+<% if user_signed_in? && current_user == @user %>
   <p>
     <strong>Personal Note:</strong>
     <%= viewing.note %>
