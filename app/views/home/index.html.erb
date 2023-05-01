@@ -1,13 +1,6 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<!--name: result["name"],
-    original_name: result["original_name"],
-    original_language: result['original_language']
-    tmdb_id: result["id"],
-    origin_country: result["origin_country"],
-    overview: result["overview"],
-    poster_path: result["poster_path"],
-    first_air_date: result["first_air_date"] -->
+<h1>Find Shows</h1>
+<p>Search below to find shows. The data comes from TDMB</p>
+
 <div class="mb-5">
 <%= form_with url: home_index_url, method: :get do |form| %>
     <%= form.label :search, "Search for shows:", class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
