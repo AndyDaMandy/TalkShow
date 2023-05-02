@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Controller for viewings aka Watchlist. Shows are created here as well, whenever you pull a review
 class ViewingsController < ApplicationController
   before_action :set_viewing, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: %i[ new create edit update destroy ]
@@ -17,11 +20,11 @@ class ViewingsController < ApplicationController
   # GET /viewings/new
   def new
     @viewing = Viewing.new
-    #@tmdb_data = params[:tmdb_id]
+    # @tmdb_data = params[:tmdb_id]
 
     @show = Show.find_or_create_by!(tmdb_id: params[:tmdb_id].to_i, original_name: params[:original_name], original_language: params[:original_language], name: params[:name], poster_path: params[:poster_path], overview: params[:overview])
-    #@show = Show.where(tmdb_id: params[:tmdb_id].to_i).first
-    
+    # @show = Show.where(tmdb_id: params[:tmdb_id].to_i).first
+
   end
 
   # GET /viewings/1/edit
@@ -32,8 +35,8 @@ class ViewingsController < ApplicationController
   def create
     @viewing = Viewing.new(viewing_params)
     @viewing.user = current_user
-    #tmdb id gets passed in the view for now as a part of viewing_params. Refactor later
-    
+    # tmdb id gets passed in the view for now as a part of viewing_params. Refactor later
+
 
     respond_to do |format|
       if @viewing.save
@@ -70,13 +73,14 @@ class ViewingsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
-    def set_viewing
-      @viewing = Viewing.find(params[:id])
-    end
+  def set_viewing
+    @viewing = Viewing.find(params[:id])
+  end
 
     # Only allow a list of trusted parameters through.
-    def viewing_params
-      params.require(:viewing).permit(:status, :note, :tmdb_id, :name, :progress, :user_id)
-    end
+  def viewing_params
+    params.require(:viewing).permit(:status, :note, :tmdb_id, :name, :progress, :user_id)
+  end
 end

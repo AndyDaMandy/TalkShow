@@ -30,6 +30,8 @@ gem "cssbundling-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+gem 'rubocop', require: false
+
 #for testing
 gem 'rspec-rails', '~> 6.0.0'
 
