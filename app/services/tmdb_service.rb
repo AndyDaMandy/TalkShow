@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'faraday'
 require 'json'
 # Service for connecting to the Tmdb Api
