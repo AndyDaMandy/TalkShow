@@ -8,7 +8,7 @@
             <li>Name: <%= @show.name%> </li>
             <li> Original Language: <%= @show.original_language %> </li>
             <li>Original Name: <%= @show.original_name %> </li>
-            <li>Overview: </li> 
+            <li>Overview: <%= @show.overview %></li>
         </ul>
         <%# link_to "New viewing", new_viewing_path(tmdb_id: data['id'].to_i) %>
         <%# link_to new_viewing_path(data['id'])%>
