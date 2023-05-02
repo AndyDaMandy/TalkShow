@@ -22,7 +22,9 @@ class ViewingsController < ApplicationController
     @viewing = Viewing.new
     # @tmdb_data = params[:tmdb_id]
 
-    @show = Show.find_or_create_by!(tmdb_id: params[:tmdb_id].to_i, original_name: params[:original_name], original_language: params[:original_language], name: params[:name], poster_path: params[:poster_path], overview: params[:overview])
+    @show = Show.find_or_create_by!(tmdb_id: params[:tmdb_id].to_i, original_name: params[:original_name],
+                                    original_language: params[:original_language], name: params[:name],
+                                    poster_path: params[:poster_path], overview: params[:overview])
     # @show = Show.where(tmdb_id: params[:tmdb_id].to_i).first
 
   end
@@ -40,7 +42,7 @@ class ViewingsController < ApplicationController
 
     respond_to do |format|
       if @viewing.save
-        format.html { redirect_to viewing_url(@viewing), notice: "Viewing was successfully created." }
+        format.html { redirect_to viewing_url(@viewing), notice: 'Viewing was successfully created.' }
         format.json { render :show, status: :created, location: @viewing }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -53,7 +55,7 @@ class ViewingsController < ApplicationController
   def update
     respond_to do |format|
       if @viewing.update(viewing_params)
-        format.html { redirect_to viewing_url(@viewing), notice: "Viewing was successfully updated." }
+        format.html { redirect_to viewing_url(@viewing), notice: 'Viewing was successfully updated.' }
         format.json { render :show, status: :ok, location: @viewing }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -67,19 +69,19 @@ class ViewingsController < ApplicationController
     @viewing.destroy
 
     respond_to do |format|
-      format.html { redirect_to viewings_url, notice: "Viewing was successfully destroyed." }
+      format.html { redirect_to viewings_url, notice: 'Viewing was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
+  # Use callbacks to share common setup or constraints between actions.
   def set_viewing
     @viewing = Viewing.find(params[:id])
   end
 
-    # Only allow a list of trusted parameters through.
+  # Only allow a list of trusted parameters through.
   def viewing_params
     params.require(:viewing).permit(:status, :note, :tmdb_id, :name, :progress, :user_id)
   end

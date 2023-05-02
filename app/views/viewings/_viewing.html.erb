@@ -6,7 +6,7 @@
             <%# data %>
             <%= image_tag("https://image.tmdb.org/t/p/w500/#{@show.poster_path}", class: "object-contain h-80 w-120")%>
             <li>Name: <%= @show.name%> </li>
-            <li> Original Language: <%= @show.original_language %> </li>
+            <li>Original Language: <%= @show.original_language %> </li>
             <li>Original Name: <%= @show.original_name %> </li>
             <li>Overview: <%= @show.overview %></li>
         </ul>
@@ -18,13 +18,17 @@
     <%= viewing.status %>
   </p>
   <p>
-    <strong>User:</strong>
+    <strong>Watcher:</strong>
     <%= @user.first_name %> <%= @user.last_name %>
   </p>
-<% if user_signed_in? && current_user == @user %>
+  <% if action_name == 'show' %>
+    <%= @data %>
+  <% end %>
+<% if action_name == 'show' && user_signed_in? && current_user == @user %>
   <p>
     <strong>Personal Note:</strong>
     <%= viewing.note %>
   </p>
+    <%= link_to 'Write a review of this show', new_review_path(viewing_id: viewing.id, tmdb_id: viewing.tmdb_id) %>
 <% end %>
 </div>
