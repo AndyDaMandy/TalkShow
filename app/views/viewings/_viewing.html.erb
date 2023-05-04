@@ -1,6 +1,8 @@
-<div id="<%= dom_id viewing %>">
+<div id="<%= dom_id viewing %>" class="my-3">
+  <div class="my-3">
   <% @show = Show.where(tmdb_id: viewing.tmdb_id).first %>
-  <% @user = User.find(viewing.user_id) %>
+  <%# @user = User.find(viewing.user_id) %>
+  <% @user = viewing.user %>
   <p>
     <strong>Watcher:</strong>
     <%= @user.first_name %> <%= @user.last_name %>
@@ -13,12 +15,13 @@
   <%# @data %>
   <%# end %>
   <% if action_name == 'show' && user_signed_in? && current_user == @user %>
-    <p>
+    <p class="mb-3">
       <strong>Personal Note:</strong>
       <%= viewing.note %>
     </p>
-    <%= link_to 'Write a review of this show', new_review_path(viewing_id: viewing.id, tmdb_id: viewing.tmdb_id) %>
+    <%= link_to 'Write a review of this show', new_review_path(viewing_id: viewing.id, tmdb_id: viewing.tmdb_id), class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 my-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
   <% end %>
+  </div>
   <% if action_name == 'show' && !@data.empty? %>
     <div>
       <ul id=<%= viewing.tmdb_id %>>
