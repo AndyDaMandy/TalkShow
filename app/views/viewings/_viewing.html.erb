@@ -1,8 +1,61 @@
 <div id="<%= dom_id viewing %>">
+  <% @show = Show.where(tmdb_id: viewing.tmdb_id).first %>
+  <% @user = User.find(viewing.user_id) %>
+  <p>
+    <strong>Watcher:</strong>
+    <%= @user.first_name %> <%= @user.last_name %>
+  </p>
+  <p>
+    <strong>Status:</strong>
+    <%= viewing.status %>
+  </p>
+  <%# if action_name == 'show' %>
+  <%# @data %>
+  <%# end %>
+  <% if action_name == 'show' && user_signed_in? && current_user == @user %>
+    <p>
+      <strong>Personal Note:</strong>
+      <%= viewing.note %>
+    </p>
+    <%= link_to 'Write a review of this show', new_review_path(viewing_id: viewing.id, tmdb_id: viewing.tmdb_id) %>
+  <% end %>
+  <% if action_name == 'show' && !@data.empty? %>
+    <div>
+      <ul id=<%= viewing.tmdb_id %>>
+        <%# data %>
+        <%= image_tag("https://image.tmdb.org/t/p/w500/#{@data['poster_path']}", class: "object-contain h-80 w-120")%>
+        <li>Name: <%= @data['name'] %> </li>
+        <li>Original Language: <%= @data['original_language'] %> </li>
+        <li>Original Name: <%= @data['original_name'] %> </li>
+        <li>Overview: <%= @data['overview'] %></li>
+        <li>Episode Run Time: <%= @data['episode_run_time'] %> - minutes </li>
+        <li>Number of Seasons: <%= @data['number_of_seasons'] %></li>
+        <li>Airing? <%= @data['in_production'] %></li>
+        <% @data['genres'].each do |genre| %>
+          <li>Genre: <%= genre['name'] %></li>
+        <% end %>
+      </ul>
+      <p>Seasons</p>
+      <div>
+        <% @data['seasons'].each do |season| %>
+          <div id=<%= season['id'] %>>
+            <ul>
+              <li><%# season %></li>
+              <%= image_tag("https://image.tmdb.org/t/p/w500/#{season['poster_path']}", class: "object-contain h-80 w-120")%>
+              <li>Season Name: <%= season['name'] %></li>
+              <li>Season Number: <%= season['season_number'] %></li>
+              <li>Episode Count: <%= season['episode_count'] %></li>
+              <li>Air Date: <%= season['air_date'] %></li>
+              <li>Overview: <%= season['overview'] %></li>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  <% else %>
     <div>
         <ul id=<%= viewing.tmdb_id %>>
-        <% @show = Show.where(tmdb_id: viewing.tmdb_id).first %>
-        <% @user = User.find(viewing.user_id) %>
             <%# data %>
             <%= image_tag("https://image.tmdb.org/t/p/w500/#{@show.poster_path}", class: "object-contain h-80 w-120")%>
             <li>Name: <%= @show.name%> </li>
@@ -13,22 +66,5 @@
         <%# link_to "New viewing", new_viewing_path(tmdb_id: data['id'].to_i) %>
         <%# link_to new_viewing_path(data['id'])%>
     </div>
-  <p>
-    <strong>Status:</strong>
-    <%= viewing.status %>
-  </p>
-  <p>
-    <strong>Watcher:</strong>
-    <%= @user.first_name %> <%= @user.last_name %>
-  </p>
-  <% if action_name == 'show' %>
-    <%= @data %>
   <% end %>
-<% if action_name == 'show' && user_signed_in? && current_user == @user %>
-  <p>
-    <strong>Personal Note:</strong>
-    <%= viewing.note %>
-  </p>
-    <%= link_to 'Write a review of this show', new_review_path(viewing_id: viewing.id, tmdb_id: viewing.tmdb_id) %>
-<% end %>
 </div>
