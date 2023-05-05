@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_27_184130) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_05_005220) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,34 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_27_184130) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_reviews_on_user_id"
     t.index ["viewing_id"], name: "index_reviews_on_viewing_id"
+  end
+
+  create_table "season_viewings", force: :cascade do |t|
+    t.integer "tmdb_id"
+    t.integer "content_id"
+    t.bigint "show_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "viewing_id", null: false
+    t.integer "status", default: 0
+    t.text "note"
+    t.integer "progress", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["show_id"], name: "index_season_viewings_on_show_id"
+    t.index ["user_id"], name: "index_season_viewings_on_user_id"
+    t.index ["viewing_id"], name: "index_season_viewings_on_viewing_id"
+  end
+
+  create_table "seasons", force: :cascade do |t|
+    t.string "name"
+    t.integer "content_id"
+    t.integer "season_number"
+    t.integer "episode_count"
+    t.string "air_date"
+    t.string "overview"
+    t.string "poster_path"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "shows", force: :cascade do |t|
@@ -86,5 +114,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_27_184130) do
   add_foreign_key "friendships", "users"
   add_foreign_key "reviews", "users"
   add_foreign_key "reviews", "viewings"
+  add_foreign_key "season_viewings", "shows"
+  add_foreign_key "season_viewings", "users"
+  add_foreign_key "season_viewings", "viewings"
   add_foreign_key "viewings", "users"
 end

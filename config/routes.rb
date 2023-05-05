@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :seasons
+  resources :season_viewings
   resources :shows
   get 'home/index'
   get 'home/privacy'

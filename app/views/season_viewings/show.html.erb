@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @season_viewing %>
+
+<div>
+  <%= link_to "Edit this season viewing", edit_season_viewing_path(@season_viewing) %> |
+  <%= link_to "Back to season viewings", season_viewings_path %>
+
+  <%= button_to "Destroy this season viewing", @season_viewing, method: :delete %>
+</div>

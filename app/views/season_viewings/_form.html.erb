@@ -1,0 +1,51 @@
+<%= form_with(model: season_viewing) do |form| %>
+  <% if season_viewing.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(season_viewing.errors.count, "error") %> prohibited this season_viewing from being saved:</h2>
+
+      <ul>
+        <% season_viewing.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%# hidden fields %>
+    <% form.hidden_field :tmdb_id, value: params[:tmdb_id] %>
+    <% form.hidden_field :content_id, value: params[:content_id] %>
+    <% form.hidden_field :viewing_id, value: params[:viewing_id] %>
+    <% form.hidden_field :show_id, value: params[:show_id] %>
+    <%# eventually add season model, but no need to set that up yet %>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.number_field :status %>
+  </div>
+
+  <div>
+    <%= form.label :note, style: "display: block" %>
+    <%= form.text_area :note %>
+  </div>
+
+  <div>
+    <%= form.label :status, "Not Started", style: "display: block" %>
+    <%= form.radio_button :status, 'not_started' %>
+  </div>
+  <div>
+    <%= form.label :status, "Watching", style: "display: block" %>
+    <%= form.radio_button :status, 'watching' %>
+  </div>
+  <div>
+    <%= form.label :status, "On Hold", style: "display: block" %>
+    <%= form.radio_button :status, 'on_hold' %>
+  </div>
+  <div>
+    <%= form.label :status, "Finished", style: "display: block" %>
+    <%= form.radio_button :status, 'finished' %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -19,7 +19,11 @@
       <strong>Personal Note:</strong>
       <%= viewing.note %>
     </p>
-    <%= link_to 'Write a review of this show', new_review_path(viewing_id: viewing.id, tmdb_id: viewing.tmdb_id), class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 my-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+    <%= link_to 'Write a review of this show',
+                new_review_path(viewing_id: viewing.id, tmdb_id: viewing.tmdb_id),
+                class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium
+                rounded-lg text-sm px-5 py-2.5 my-3 dark:bg-blue-600 dark:hover:bg-blue-700
+                focus:outline-none dark:focus:ring-blue-800" %>
   <% end %>
   </div>
   <% if action_name == 'show' && !@data.empty? %>
@@ -38,10 +42,10 @@
           <li>Genre: <%= genre['name'] %></li>
         <% end %>
       </ul>
-      <p>Seasons</p>
+      <h3 class="mb-3">Seasons</h3>
       <div>
-        <% @data['seasons'].each do |season| %>
-          <div id=<%= season['id'] %>>
+        <% @data['seasons'].reverse.each do |season| %>
+          <div id=<%= season['id'] %>, class="mb-2">
             <ul>
               <li><%# season %></li>
               <%= image_tag("https://image.tmdb.org/t/p/w500/#{season['poster_path']}", class: "object-contain h-80 w-120")%>
@@ -51,6 +55,13 @@
               <li>Air Date: <%= season['air_date'] %></li>
               <li>Overview: <%= season['overview'] %></li>
             </ul>
+            <div class="my-4">
+            <%= link_to "New season viewing",
+                        new_season_viewing_path(tmdb_id: viewing.tmdb_id,content_id: season['id'], viewing_id: viewing.id, show_id: @show.id),
+                        class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+            </div>
+            <hr />
           </div>
         <% end %>
       </div>

@@ -1,0 +1,52 @@
+<%= form_with(model: season) do |form| %>
+  <% if season.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(season.errors.count, "error") %> prohibited this season from being saved:</h2>
+
+      <ul>
+        <% season.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :content_id, style: "display: block" %>
+    <%= form.number_field :content_id %>
+  </div>
+
+  <div>
+    <%= form.label :season_number, style: "display: block" %>
+    <%= form.number_field :season_number %>
+  </div>
+
+  <div>
+    <%= form.label :episode_count, style: "display: block" %>
+    <%= form.number_field :episode_count %>
+  </div>
+
+  <div>
+    <%= form.label :air_date, style: "display: block" %>
+    <%= form.text_field :air_date %>
+  </div>
+
+  <div>
+    <%= form.label :overview, style: "display: block" %>
+    <%= form.text_field :overview %>
+  </div>
+
+  <div>
+    <%= form.label :poster_path, style: "display: block" %>
+    <%= form.text_field :poster_path %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
