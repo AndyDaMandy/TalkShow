@@ -40,6 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_005220) do
   create_table "season_viewings", force: :cascade do |t|
     t.integer "tmdb_id"
     t.integer "content_id"
+    t.integer "season_number"
     t.bigint "show_id", null: false
     t.bigint "user_id", null: false
     t.bigint "viewing_id", null: false

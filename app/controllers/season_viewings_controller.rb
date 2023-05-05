@@ -11,7 +11,9 @@ class SeasonViewingsController < ApplicationController
 
   # GET /season_viewings/1 or /season_viewings/1.json
   def show
-    #@season = Season.find(@season_viewing.season)
+    @season = Season.where(content_id: @season_viewing.content_id).first!
+    hash = TmdbService.new
+    @data = hash.get_season_by_id(@season_viewing.tmdb_id, @season.season_number)
   end
 
   # GET /season_viewings/new

@@ -30,8 +30,8 @@ class TmdbService
 
   end
 
-  def get_season_by_id(id)
-    response = Faraday.get("https://api.themoviedb.org/3/tv/#{id}/seasons?api_key=#{ENV['TMDB_KEY']}")
+  def get_season_by_id(tv_id, season_num)
+    response = Faraday.get("https://api.themoviedb.org/3/tv/#{tv_id}/season/#{season_num}?api_key=#{ENV['TMDB_KEY']}")
     return unless response.status == 200
 
     JSON.parse(response.body)

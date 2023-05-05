@@ -4,6 +4,7 @@ class CreateSeasonViewings < ActiveRecord::Migration[7.0]
     create_table :season_viewings do |t|
       t.integer :tmdb_id
       t.integer :content_id
+      t.integer :season_number
       t.references :show, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
       t.references :viewing, null: false, foreign_key: true

@@ -5,35 +5,56 @@
     <% @user = User.where(id: season_viewing.user_id).first! %>
     <%# season_viewing.content_id %>
   <div class="mb-2">
-    <ul>
-      <li><%# season %></li>
-      <%= image_tag("https://image.tmdb.org/t/p/w500#{@season.poster_path}", class: "object-contain h-80 w-120")%>
-      <li>Season Number: <%= @season.season_number %></li>
-      <li>Episode Count: <%= @season.episode_count %></li>
-      <li>Air Date: <%= @season.air_date %></li>
-      <li>Overview: <%= raw @season.overview  %></li>
-    </ul>
-  </div>
+      <p>
+        <strong>Show:</strong>
+        <%= @show.name %>
+      </p>
+      <p>
+        <strong>Watcher:</strong>
+        <%= @user.first_name %> <%= @user.last_name %>
+      </p>
 
-  <p>
-    <strong>Show:</strong>
-    <%= @show.name %>
-  </p>
+      <p>
+        <strong>Status:</strong>
+        <%= season_viewing.status %>
+      </p>
+      <% if action_name == 'show' && user_signed_in? && @user == current_user %>
+      <p>
+        <strong>Note:</strong>
+        <%= season_viewing.note %>
+      </p>
+      <% end %>
+    </div>
+    <div class="mb-5">
+      <ul>
+        <li><%# season %></li>
+        <%= image_tag("https://image.tmdb.org/t/p/w500#{@season.poster_path}", class: "object-contain h-80 w-120")%>
+        <li>Season Number: <%= @season.season_number %></li>
+        <li>Episode Count: <%= @season.episode_count %></li>
+        <li>Air Date: <%= @season.air_date %></li>
+        <li>Season Overview: <%= raw @season.overview  %></li>
+      </ul>
+    </div>
+  <% if action_name == 'show' && @data != nil %>
+    <div class="mb-2">
+        <% @data['episodes'].each do |episode| %>
+        <div class="mb-2">
+          <ul>
+            <li>Episode Number: <%= episode['episode_number'] %></li>
+            <li>Episode Name: <%= episode['name'] %></li>
+            <li>Runtime: <%= episode['runtime'] %> minutes</li>
+            <li>Air date: <%= episode['air_date'] %></li>
+            <li>Overview <%= episode['overview'] %></li>
+          </ul>
+          <hr>
+        </div>
 
-    <%# season_viewing.user_id %>
-  <p>
-    <strong>Watcher:</strong>
-    <%= @user.first_name %> <%= @user.last_name %>
-  </p>
+        <% end %>
 
-  <p>
-    <strong>Status:</strong>
-    <%= season_viewing.status %>
-  </p>
-
-  <p>
-    <strong>Note:</strong>
-    <%= season_viewing.note %>
-  </p>
-
+    </div>
+    <% else %>
+    <div>
+      <p>We had some trouble pulling the episode data. Try again later!</p>
+    </div>
+  <% end %>
 </div>
