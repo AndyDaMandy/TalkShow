@@ -6,7 +6,7 @@ class SeasonViewing < ApplicationRecord
   belongs_to :user
   belongs_to :viewing
 
-  enum status: %i[not_started watching on_hold finished], prefix: :seasons_viewing
+  enum status: %i[not_started watching on_hold finished]
   # hidden, content_id = tmdb's season id
   # hidden, tmdb_id = show's id
 end

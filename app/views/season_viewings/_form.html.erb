@@ -12,16 +12,11 @@
   <% end %>
 
     <%# hidden fields %>
-    <% form.hidden_field :tmdb_id, value: params[:tmdb_id] %>
-    <% form.hidden_field :content_id, value: params[:content_id] %>
-    <% form.hidden_field :viewing_id, value: params[:viewing_id] %>
-    <% form.hidden_field :show_id, value: params[:show_id] %>
+    <%= form.hidden_field :tmdb_id, value: params[:tmdb_id].to_i %>
+    <%= form.hidden_field :content_id, value: params[:content_id].to_i %>
+    <%= form.hidden_field :viewing_id, value: params[:viewing_id].to_i %>
+    <%= form.hidden_field :show_id, value: params[:show_id].to_i %>
     <%# eventually add season model, but no need to set that up yet %>
-
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.number_field :status %>
-  </div>
 
   <div>
     <%= form.label :note, style: "display: block" %>

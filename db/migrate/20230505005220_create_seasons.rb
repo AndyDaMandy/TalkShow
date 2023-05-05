@@ -3,6 +3,7 @@ class CreateSeasons < ActiveRecord::Migration[7.0]
     create_table :seasons do |t|
       t.string :name
       t.integer :content_id
+      t.integer :tmdb_id
       t.integer :season_number
       t.integer :episode_count
       t.string :air_date

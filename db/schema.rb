@@ -56,6 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_05_005220) do
   create_table "seasons", force: :cascade do |t|
     t.string "name"
     t.integer "content_id"
+    t.integer "tmdb_id"
     t.integer "season_number"
     t.integer "episode_count"
     t.string "air_date"
