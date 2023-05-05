@@ -1,17 +1,29 @@
 <div id="<%= dom_id season_viewing %>">
     <%# season_viewing.tmdb_id %>
-
+    <% @season = Season.where(content_id: season_viewing.content_id).first! %>
+    <% @show = Show.where(tmdb_id: season_viewing.tmdb_id).first! %>
+    <% @user = User.where(id: season_viewing.user_id).first! %>
     <%# season_viewing.content_id %>
+  <div class="mb-2">
+    <ul>
+      <li><%# season %></li>
+      <%= image_tag("https://image.tmdb.org/t/p/w500#{@season.poster_path}", class: "object-contain h-80 w-120")%>
+      <li>Season Number: <%= @season.season_number %></li>
+      <li>Episode Count: <%= @season.episode_count %></li>
+      <li>Air Date: <%= @season.air_date %></li>
+      <li>Overview: <%= raw @season.overview  %></li>
+    </ul>
+  </div>
 
   <p>
     <strong>Show:</strong>
-    <%# season_viewing.show_id %>
+    <%= @show.name %>
   </p>
 
     <%# season_viewing.user_id %>
   <p>
-    <strong>Viewing:</strong>
-    <%# season_viewing.viewing_id %>
+    <strong>Watcher:</strong>
+    <%= @user.first_name %> <%= @user.last_name %>
   </p>
 
   <p>
@@ -22,11 +34,6 @@
   <p>
     <strong>Note:</strong>
     <%= season_viewing.note %>
-  </p>
-
-  <p>
-    <strong>Progress:</strong>
-    <%= season_viewing.progress %>
   </p>
 
 </div>

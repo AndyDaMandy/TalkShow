@@ -10,12 +10,16 @@ class SeasonViewingsController < ApplicationController
   end
 
   # GET /season_viewings/1 or /season_viewings/1.json
-  def show; end
+  def show
+    #@season = Season.find(@season_viewing.season)
+  end
 
   # GET /season_viewings/new
   def new
     @season_viewing = SeasonViewing.new
-    @season = Season.find_or_create_by!(tmdb_id: params[:tmdb_id].to_i, content_id: params[:content_id].to_i,
+    @season = Season.find_or_create_by!(tmdb_id: params[:tmdb_id], content_id: params[:content_id].to_i,
+                                        episode_count: params[:episode_count], season_number: params[:season_number].to_i,
+                                        air_date: params[:air_date],
                                         name: params[:name], poster_path: params[:poster_path],
                                         overview: params[:overview])
   end

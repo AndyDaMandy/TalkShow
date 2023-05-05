@@ -45,23 +45,28 @@
       <h3 class="mb-3">Seasons</h3>
       <div>
         <% @data['seasons'].reverse.each do |season| %>
+          <% if season['season_number'] != 0 %>
           <div id=<%= season['id'] %>, class="mb-2">
             <ul>
               <li><%# season %></li>
               <%= image_tag("https://image.tmdb.org/t/p/w500/#{season['poster_path']}", class: "object-contain h-80 w-120")%>
-              <li>Season Name: <%= season['name'] %></li>
               <li>Season Number: <%= season['season_number'] %></li>
               <li>Episode Count: <%= season['episode_count'] %></li>
               <li>Air Date: <%= season['air_date'] %></li>
-              <li>Overview: <%= season['overview'] %></li>
+              <li>Overview: <%= raw season['overview'] %></li>
             </ul>
             <div class="my-4">
             <%= link_to "New season viewing",
-                        new_season_viewing_path(tmdb_id: viewing.tmdb_id,content_id: season['id'], viewing_id: viewing.id, show_id: @show.id),
+                        new_season_viewing_path(name: season['name'], season_number: season['season_number'],
+                                                air_date: season['air_date'], poster_path: season['poster_path'],
+                                                episode_count: season['episode_count'], tmdb_id: viewing.tmdb_id,
+                                                content_id: season['id'], viewing_id: viewing.id,
+                                                overview: season['overview'], show_id: @show),
                         class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
                         text-sm px-5 py-2.5 my-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
             </div>
             <hr />
+            <% end %>
           </div>
         <% end %>
       </div>
