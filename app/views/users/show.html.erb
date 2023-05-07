@@ -4,8 +4,35 @@
   <ul>
     <li>First Name: <%= @user.first_name %></li>
     <li>Last Name:<%= @user.last_name %></li>
+    <% if user_signed_in? && @user != current_user %>
+      <li><%= link_to "Add Friend", friendships_path(friend_id: @user), :method => :post %></li>
+    <% end %>
   </ul>
 </div>
+<% if user_signed_in? && @user == current_user %>
+
+
+  <h2>Friends</h2>
+  <ul>
+    <% @user.friendships.each do |friendship| %>
+    <li>
+            <%= friendship.friend.username  %>
+      (<%= link_to "remove", friendship, :method => :delete %>)
+            </li>
+    <%  end %>
+  </ul>
+
+  <p><%= link_to "Find Friends", users_path %></p>
+
+  <h2>Friended by Users</h2>
+  <ul>
+    <% @user.inverse_friends.each do |user| %>
+    <li><%= user.username  %></li>
+    <%  end %>
+  </ul>
+
+
+<% end %>
 <div>
   <h2 class="mb-2">Watch List:</h2>
   <% @user.viewings.each do |viewing| %>
@@ -21,7 +48,6 @@
       <li>Original Language: <%= @show.original_language %> </li>
       <li>Original Name: <%= @show.original_name %> </li>
       <li>Overview: <%= @show.overview %></li>
-
     </ul>
   <% end %>
 </div>
