@@ -1,5 +1,5 @@
 <nav class="flex items-center justify-between flex-wrap bg-gray-100 p-6">
-  <div class="flex items-center flex-shrink-0 text-pink-500 mr-6">
+  <div class="flex items-center flex-shrink-0 text-pink-500 hover:text-pink-300 mr-6">
     <%# image_tag "serial publisher.svg", class: "mr-4"%>
     <%= link_to shows_path do %>
     <span class="font-semibold text-xl tracking-tight">Talk Show</span>
@@ -7,14 +7,15 @@
   </div>
   <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
     <div class="text-sm lg:flex-grow">
-      <%= link_to "Shows", shows_path, class: "block mt-4 lg:inline-block lg:mt-0 text-amber-900 hover:text-amber-600 mr-4" %>
-      <%= link_to "What People are watching", viewings_path, class: "block mt-4 lg:inline-block lg:mt-0 text-amber-900 hover:text-amber-600 mr-4" %>
-      <%= link_to "Watchers", users_path, class: "block mt-4 lg:inline-block lg:mt-0 text-amber-900 hover:text-amber-600 mr-4" %>
+      <%= link_to "Shows", shows_path, class: "block mt-4 lg:inline-block lg:mt-0 text-pink-500 hover:text-pink-300 mr-4" %>
+      <%= link_to "What People are watching", viewings_path, class: "block mt-4 lg:inline-block lg:mt-0 text-pink-500 hover:text-pink-300 mr-4" %>
+      <%= link_to "Latest Reviews", reviews_path, class: "block mt-4 lg:inline-block lg:mt-0 text-pink-500 hover:text-pink-300 mr-4" %>
+      <%= link_to "Watchers", users_path, class: "block mt-4 lg:inline-block lg:mt-0 text-pink-500 hover:text-pink-300 mr-4" %>
       <%# link_to "Tags", tags_path, class: "block mt-4 lg:inline-block lg:mt-0 text-amber-900 hover:text-amber-600 mr-4" %>
       <% if user_signed_in? %>     
         <%= link_to user_path(current_user) do %>
           <strong class="block mt-4 lg:inline-block lg:mt-0 font-semibold
-          hover:text-amber-600 text-amber-900 mr-4">
+          hover:text-pink-600 text-pink-400 mr-4">
             <%= current_user.first_name %> <%= current_user.last_name %>
           </strong>
         <% end %>
@@ -25,14 +26,14 @@
         <%= link_to "Sign Out", destroy_user_session_path,
                     data: { turbo_method: :delete, turbo_confirm: "Are you sure you'd like to sign out?" },
                     class: "inline-block text-sm px-4 py-2 leading-none border rounded border-amber-900
-                    hover:border-transparent hover:bg-white mt-4 lg:mt-0 text-amber-900 hover:text-amber-950" %>
+                    hover:border-transparent hover:bg-white mt-4 lg:mt-0 text-pink-500 hover:text-pink-300 " %>
     <% else %>
         <%= link_to "Log In", new_user_session_path,
-                    class: "inline-block text-sm px-4 py-2 leading-none border rounded border-amber-900
-        hover:border-transparent hover:bg-white mt-4 lg:mt-0 text-amber-900 hover:text-amber-950" %>
+                    class: "inline-block text-sm px-4 py-2 leading-none border rounded border-pink-500
+        hover:border-transparent hover:bg-white mt-4 lg:mt-0 text-pink-500 hover:text-pink-300" %>
         <%= link_to "Sign Up", new_user_registration_path,
-                    class: "inline-block text-sm px-4 py-2 leading-none border rounded border-amber-900
-        hover:border-transparent hover:bg-white mt-4 lg:mt-0 text-amber-900 hover:text-amber-950" %>
+                    class: "inline-block text-sm px-4 py-2 leading-none border rounded border-pink-500
+        hover:border-transparent hover:bg-white mt-4 lg:mt-0 text-pink-500 hover:text-pink-300 " %>
     <% end %>
         </div>
   </div>

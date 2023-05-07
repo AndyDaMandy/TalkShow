@@ -40,7 +40,7 @@
         <li>Overview: <%= @data['overview'] %></li>
         <li>Episode Run Time: <%= @data['episode_run_time'] %> - minutes </li>
         <li>Number of Seasons: <%= @data['number_of_seasons'] %></li>
-        <li>Airing? <%= @data['in_production'] %></li>
+        <li>Currently Airing: <%= @data['in_production'] == true ? "Airing" : "Not Airing" %></li>
         <% @data['genres'].each do |genre| %>
           <li>Genre: <%= genre['name'] %></li>
         <% end %>
