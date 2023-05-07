@@ -1,5 +1,6 @@
 <div id="<%= dom_id show %>">
 
+  <%= image_tag("https://image.tmdb.org/t/p/w500/#{show.poster_path}", class: "object-contain h-80 w-120")%>
   <p>
     <strong>Original language:</strong>
     <%= show.original_language %>
@@ -13,16 +14,6 @@
   <p>
     <strong>Overview:</strong>
     <%= show.overview %>
-  </p>
-
-  <p>
-    <strong>Poster path:</strong>
-    <%= show.poster_path %>
-  </p>
-
-  <p>
-    <strong>First air date:</strong>
-    <%= show.first_air_date %>
   </p>
 
   <p>

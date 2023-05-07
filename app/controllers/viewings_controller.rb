@@ -2,12 +2,17 @@
 
 # Controller for viewings aka Watchlist. Shows are created here as well, whenever you pull a review
 class ViewingsController < ApplicationController
-  before_action :set_viewing, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, only: %i[ new create edit update destroy ]
+  before_action :set_viewing, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
 
   # GET /viewings or /viewings.json
   def index
-    @viewings = Viewing.all
+    if user_signed_in? && params[:filter] == 'my_list'
+      @viewings = current_user.viewings.order(created_at: :desc)
+    else
+      @viewings = Viewing.all.order(created_at: :desc)
+    end
+    
   end
 
   # GET /viewings/1 or /viewings/1.json
@@ -21,7 +26,6 @@ class ViewingsController < ApplicationController
   def new
     @viewing = Viewing.new
     # @tmdb_data = params[:tmdb_id]
-
     @show = Show.find_or_create_by!(tmdb_id: params[:tmdb_id].to_i, original_name: params[:original_name],
                                     original_language: params[:original_language], name: params[:name],
                                     poster_path: params[:poster_path], overview: params[:overview])
@@ -38,8 +42,6 @@ class ViewingsController < ApplicationController
     @viewing = Viewing.new(viewing_params)
     @viewing.user = current_user
     # tmdb id gets passed in the view for now as a part of viewing_params. Refactor later
-
-
     respond_to do |format|
       if @viewing.save
         format.html { redirect_to viewing_url(@viewing), notice: 'Viewing was successfully created.' }

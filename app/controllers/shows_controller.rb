@@ -6,11 +6,11 @@ class ShowsController < ApplicationController
 
   # GET /shows or /shows.json
   def index
+    if params[:search]
+      hash = TmdbService.new
+      @data = hash.get_show_by_title(params[:search])
+    end
     @shows = Show.all
-  end
-
-  def search
-    response = TmdbService.find_tv_show(params[:title])
   end
 
   # GET /shows/1 or /shows/1.json

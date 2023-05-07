@@ -6,7 +6,7 @@ class SeasonViewingsController < ApplicationController
 
   # GET /season_viewings or /season_viewings.json
   def index
-    @season_viewings = SeasonViewing.all
+    @season_viewings = SeasonViewing.all.order(created_at: :desc)
   end
 
   # GET /season_viewings/1 or /season_viewings/1.json

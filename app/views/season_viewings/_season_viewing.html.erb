@@ -18,12 +18,18 @@
         <strong>Status:</strong>
         <%= season_viewing.status %>
       </p>
+      <p><em>
+        Started: <%= season_viewing.created_at.strftime('%d/%m/%Y') %>
+      </em></p>
       <% if action_name == 'show' && user_signed_in? && @user == current_user %>
       <p>
         <strong>Note:</strong>
         <%= season_viewing.note %>
       </p>
       <% end %>
+    <%= link_to "View Info", season_viewing,
+        class: "inline-block text-sm px-4 py-2 leading-none border rounded border-amber-900 hover:border-transparent
+                                   hover:bg-white mt-4 lg:mt-0 text-amber-900 hover:text-amber-950" %>
     </div>
     <div class="mb-5">
       <ul>
@@ -52,7 +58,7 @@
         <% end %>
 
     </div>
-    <% else %>
+    <% elsif action_name == 'show' &&@data == nil %>
     <div>
       <p>We had some trouble pulling the episode data. Try again later!</p>
     </div>

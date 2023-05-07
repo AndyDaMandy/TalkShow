@@ -11,6 +11,9 @@
     <strong>Status:</strong>
     <%= viewing.status %>
   </p>
+    <p><em>
+      Started: <%= viewing.created_at.strftime('%d/%m/%Y') %>
+    </em></p>
   <%# if action_name == 'show' %>
   <%# @data %>
   <%# end %>
