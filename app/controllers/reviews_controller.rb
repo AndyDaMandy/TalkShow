@@ -11,7 +11,9 @@ class ReviewsController < ApplicationController
   end
 
   # GET /reviews/1 or /reviews/1.json
-  def show; end
+  def show
+    @show = Show.where(tmdb_id: @review.tmdb_id).first!
+  end
 
   # GET /reviews/new
   def new
@@ -24,11 +26,7 @@ class ReviewsController < ApplicationController
   # POST /reviews or /reviews.json
   def create
     @viewing = Viewing.find(review_params[:viewing_id])
-    @user = User.find(@viewing.user)
     @review = Review.new(review_params)
-
-    return nil if @user != current_user
-
     @review.user = current_user
 
     respond_to do |format|
@@ -74,6 +72,6 @@ class ReviewsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def review_params
-    params.require(:review).permit(:rating, :recommend, :content, :viewing_id, :show_id, :movie_id)
+    params.require(:review).permit(:rating, :recommend, :content, :viewing_id, :tmdb_id, :user_id)
   end
 end
