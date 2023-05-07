@@ -32,17 +32,22 @@ gem "jbuilder"
 
 gem 'rubocop', require: false
 
-#for testing
+# for testing
 gem 'rspec-rails', '~> 6.0.0'
 
-#for user auth
+# for user auth
 gem 'devise'
 
-#for APIs
+# for APIs
 gem 'faraday'
 
-#for secrets
+# for secrets
 gem 'figaro'
+
+# for pagination
+
+gem 'kaminari'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

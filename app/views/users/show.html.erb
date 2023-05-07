@@ -1,1 +1,27 @@
 <h1>Show</h1>
+
+<div class="my-3">
+  <ul>
+    <li>First Name: <%= @user.first_name %></li>
+    <li>Last Name:<%= @user.last_name %></li>
+  </ul>
+</div>
+<div>
+  <h2 class="mb-2">Watch List:</h2>
+  <% @user.viewings.each do |viewing| %>
+    <% @show = Show.where(tmdb_id: viewing.tmdb_id).first! %>
+    <ul>
+      <p>
+        <strong>Status:</strong>
+        <%= viewing.status %>
+      </p>
+        <%# data %>
+      <%= image_tag("https://image.tmdb.org/t/p/w500/#{@show.poster_path}", class: "object-contain h-80 w-120")%>
+      <li>Name: <%= @show.name %> </li>
+      <li>Original Language: <%= @show.original_language %> </li>
+      <li>Original Name: <%= @show.original_name %> </li>
+      <li>Overview: <%= @show.overview %></li>
+
+    </ul>
+  <% end %>
+</div>
