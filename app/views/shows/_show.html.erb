@@ -1,24 +1,71 @@
 <div id="<%= dom_id show %>">
+  <% if action_name == 'show' && !@data.empty? %>
+    <div>
+      <ul id=<%= viewing.tmdb_id %>>
+        <%# data %>
+        <%= image_tag("https://image.tmdb.org/t/p/w500/#{@data['poster_path']}", class: "object-contain h-80 w-120")%>
+        <li>Name: <%= @data['name'] %> </li>
+        <li>Original Language: <%= @data['original_language'] %> </li>
+        <li>Original Name: <%= @data['original_name'] %> </li>
+        <li>Overview: <%= @data['overview'] %></li>
+        <li>Episode Run Time: <%= @data['episode_run_time'] %> - minutes </li>
+        <li>Number of Seasons: <%= @data['number_of_seasons'] %></li>
+        <li>Currently Airing: <%= @data['in_production'] == true ? "Airing" : "Not Airing" %></li>
+        <% @data['genres'].each do |genre| %>
+          <li>Genre: <%= genre['name'] %></li>
+        <% end %>
+      </ul>
+      <h3 class="mb-3">Seasons</h3>
+      <div>
+        <% @data['seasons'].reverse.each do |season| %>
+          <% if season['season_number'] != 0 %>
+            <div id=<%= season['id'] %>, class="mb-2">
+              <ul>
+                <li><%# season %></li>
+                <%= image_tag("https://image.tmdb.org/t/p/w500/#{season['poster_path']}", class: "object-contain h-80 w-120")%>
+                <li>Season Number: <%= season['season_number'] %></li>
+                <li>Episode Count: <%= season['episode_count'] %></li>
+                <li>Air Date: <%= season['air_date'] %></li>
+                <li>Overview: <%= raw season['overview'] %></li>
+              </ul>
+              <div class="my-4">
+                <%= link_to "New season viewing",
+                            new_season_viewing_path(name: season['name'], season_number: season['season_number'],
+                                                    air_date: season['air_date'], poster_path: season['poster_path'],
+                                                    episode_count: season['episode_count'], tmdb_id: viewing.tmdb_id,
+                                                    content_id: season['id'], viewing_id: viewing.id,
+                                                    overview: season['overview'], show_id: @show),
+                            class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+              </div>
+              <hr />
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <%= image_tag("https://image.tmdb.org/t/p/w500/#{show.poster_path}", class: "object-contain h-80 w-120")%>
+    <p>
+      <strong>Original language:</strong>
+      <%= show.original_language %>
+    </p>
 
-  <%= image_tag("https://image.tmdb.org/t/p/w500/#{show.poster_path}", class: "object-contain h-80 w-120")%>
-  <p>
-    <strong>Original language:</strong>
-    <%= show.original_language %>
-  </p>
+    <p>
+      <strong>Original name:</strong>
+      <%= show.original_name %>
+    </p>
 
-  <p>
-    <strong>Original name:</strong>
-    <%= show.original_name %>
-  </p>
+    <p>
+      <strong>Overview:</strong>
+      <%= show.overview %>
+    </p>
 
-  <p>
-    <strong>Overview:</strong>
-    <%= show.overview %>
-  </p>
-
-  <p>
-    <strong>Name:</strong>
-    <%= show.name %>
-  </p>
+    <p>
+      <strong>Name:</strong>
+      <%= show.name %>
+    </p>
+    <p>We had trouble pulling the season data, try again later!</p>
+  <% end %>
 
 </div>
