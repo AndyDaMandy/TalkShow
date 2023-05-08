@@ -15,6 +15,11 @@ class ShowsController < ApplicationController
 
   # GET /shows/1 or /shows/1.json
   def show
+    if @show.empty?
+      @show = Show.find_or_create_by!(tmdb_id: params[:tmdb_id].to_i, original_name: params[:original_name],
+                                      original_language: params[:original_language], name: params[:name],
+                                      poster_path: params[:poster_path], overview: params[:overview])
+    end
     # NOTE: that show is set by set_show
     hash = TmdbService.new
     @data = hash.get_show_by_id(@show.tmdb_id)

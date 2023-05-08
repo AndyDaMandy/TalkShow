@@ -17,27 +17,34 @@
       </ul>
       <% unless @providers.empty? %>
         <p>This data is provided by JustWatch via Tmdb</p>
+        <div class="grid gap-4 grid-cols-3">
         <% @providers['results']['US']['flatrate'].each do |provider| %>
-          <div class="inline-block">
-          <%= image_tag("https://image.tmdb.org/t/p/w200/#{provider['logo_path']}", class: "object-contain w-30") %>
-          <p><% provider['name'] %></p>
+          <div class="m-2">
+            <%= image_tag("https://image.tmdb.org/t/p/w200/#{provider['logo_path']}", class: "object-contain w-20") %>
+            <p><% provider['name'] %></p>
           </div>
         <% end %>
       <%  end %>
+    </div>
       <% unless @credits.empty? %>
+        <!-- parent for credits -->
+        <div class="grid gap-4 grid-cols-3">
         <% @credits['cast'].each do |credit| %>
-        <ul class="inline-block">
-          <%= image_tag("https://image.tmdb.org/t/p/w300/#{credit['profile_path']}", class: "object-contain h-80 w-100") %>
-          <li>Actor/Actress: <%= credit['name'] %></li>
-          <li>Character name: <%= credit['character'] %></li>
-        </ul>
+          <div class="m-2">
+            <%= image_tag("https://image.tmdb.org/t/p/w300/#{credit['profile_path']}", class: "object-contain h-80 w-100") %>
+            <ul>
+              <li>Actor/Actress: <%= credit['name'] %></li>
+              <li>Character name: <%= credit['character'] %></li>
+            </ul>
+          </div>
         <% end %>
       <% end %>
-      <h3 class="mb-3">Seasons</h3>
-      <div>
+      </div>
+      <h3 class="mb-3 text-2xl font-bold">Seasons</h3>
+      <div class="grid gap-4 grid-cols-3">
         <% @data['seasons'].reverse.each do |season| %>
           <% if season['season_number'] != 0 %>
-            <div id=<%= season['id'] %>, class="mb-2">
+            <div id=<%= season['id'] %>, class="m-2">
               <ul>
                 <li><%# season %></li>
                 <%= image_tag("https://image.tmdb.org/t/p/w500/#{season['poster_path']}", class: "object-contain h-80 w-120")%>
@@ -62,7 +69,9 @@
       </div>
     </div>
   <% else %>
+    <%= link_to show do %>
     <%= image_tag("https://image.tmdb.org/t/p/w500/#{show.poster_path}", class: "object-contain h-80 w-120")%>
+      <% end %>
     <p>
       <strong>Original language:</strong>
       <%= show.original_language %>
