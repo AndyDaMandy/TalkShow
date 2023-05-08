@@ -14,7 +14,14 @@ class ShowsController < ApplicationController
   end
 
   # GET /shows/1 or /shows/1.json
-  def show; end
+  def show
+    # NOTE: that show is set by set_show
+    hash = TmdbService.new
+    @data = hash.get_show_by_id(@show.tmdb_id)
+    # NOTE:  you must attribute provider data to JustWatch, or you will lose API Access
+    @providers = hash.get_watch_providers_by_id(@show.tmdb_id)
+    @credits = hash.get_credits_by_id(@show.tmdb_id)
+  end
 
   # GET /shows/new
   def new

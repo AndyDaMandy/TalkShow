@@ -1,7 +1,7 @@
 <div id="<%= dom_id show %>">
   <% if action_name == 'show' && !@data.empty? %>
     <div>
-      <ul id=<%= viewing.tmdb_id %>>
+      <ul id=<%# viewing.tmdb_id %>>
         <%# data %>
         <%= image_tag("https://image.tmdb.org/t/p/w500/#{@data['poster_path']}", class: "object-contain h-80 w-120")%>
         <li>Name: <%= @data['name'] %> </li>
@@ -15,6 +15,24 @@
           <li>Genre: <%= genre['name'] %></li>
         <% end %>
       </ul>
+      <% unless @providers.empty? %>
+        <p>This data is provided by JustWatch via Tmdb</p>
+        <% @providers['results']['US']['flatrate'].each do |provider| %>
+          <div class="inline-block">
+          <%= image_tag("https://image.tmdb.org/t/p/w200/#{provider['logo_path']}", class: "object-contain w-30") %>
+          <p><% provider['name'] %></p>
+          </div>
+        <% end %>
+      <%  end %>
+      <% unless @credits.empty? %>
+        <% @credits['cast'].each do |credit| %>
+        <ul class="inline-block">
+          <%= image_tag("https://image.tmdb.org/t/p/w300/#{credit['profile_path']}", class: "object-contain h-80 w-100") %>
+          <li>Actor/Actress: <%= credit['name'] %></li>
+          <li>Character name: <%= credit['character'] %></li>
+        </ul>
+        <% end %>
+      <% end %>
       <h3 class="mb-3">Seasons</h3>
       <div>
         <% @data['seasons'].reverse.each do |season| %>
@@ -29,12 +47,11 @@
                 <li>Overview: <%= raw season['overview'] %></li>
               </ul>
               <div class="my-4">
-                <%= link_to "New season viewing",
-                            new_season_viewing_path(name: season['name'], season_number: season['season_number'],
-                                                    air_date: season['air_date'], poster_path: season['poster_path'],
-                                                    episode_count: season['episode_count'], tmdb_id: viewing.tmdb_id,
-                                                    content_id: season['id'], viewing_id: viewing.id,
-                                                    overview: season['overview'], show_id: @show),
+                <%= link_to "View Season Info",
+                            season_path(name: season['name'], season_number: season['season_number'],
+                                        air_date: season['air_date'], poster_path: season['poster_path'],
+                                        episode_count: season['episode_count'], tmdb_id: @show.tmdb_id,
+                                        content_id: season['id'], overview: season['overview'], show_id: @show),
                             class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
                         text-sm px-5 py-2.5 my-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
               </div>

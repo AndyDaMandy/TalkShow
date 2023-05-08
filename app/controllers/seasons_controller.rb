@@ -11,6 +11,13 @@ class SeasonsController < ApplicationController
 
   # GET /seasons/1 or /seasons/1.json
   def show
+    @new_season = Season.find_or_create_by!(tmdb_id: params[:tmdb_id], content_id: params[:content_id].to_i,
+                                            episode_count: params[:episode_count], season_number: params[:season_number].to_i,
+                                            air_date: params[:air_date],
+                                            name: params[:name], poster_path: params[:poster_path],
+                                            overview: params[:overview])
+    hash = TmdbService.new
+    @data = hash.get_season_by_id(@season.tmdb_id, @season.season_number)
   end
 
   # GET /seasons/new
@@ -28,7 +35,7 @@ class SeasonsController < ApplicationController
 
     respond_to do |format|
       if @season.save
-        format.html { redirect_to season_url(@season), notice: "Season was successfully created." }
+        format.html { redirect_to season_url(@season), notice: 'Season was successfully created.' }
         format.json { render :show, status: :created, location: @season }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,7 +48,7 @@ class SeasonsController < ApplicationController
   def update
     respond_to do |format|
       if @season.update(season_params)
-        format.html { redirect_to season_url(@season), notice: "Season was successfully updated." }
+        format.html { redirect_to season_url(@season), notice: 'Season was successfully updated.' }
         format.json { render :show, status: :ok, location: @season }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,19 +62,18 @@ class SeasonsController < ApplicationController
     @season.destroy
 
     respond_to do |format|
-      format.html { redirect_to seasons_url, notice: "Season was successfully destroyed." }
+      format.html { redirect_to seasons_url, notice: 'Season was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_season
-      @season = Season.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def season_params
-      params.require(:season).permit(:name, :content_id, :season_number, :episode_count, :air_date, :overview, :poster_path)
-    end
+  def set_season
+    @season = Season.find(params[:id])
+  end
+
+  def season_params
+    params.require(:season).permit(:name, :content_id, :season_number, :episode_count, :air_date, :overview, :poster_path)
+  end
 end

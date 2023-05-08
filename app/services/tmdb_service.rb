@@ -38,4 +38,21 @@ class TmdbService
 
   end
 
+  def get_watch_providers_by_id(id)
+    #  NOTE: You must credit JustWatch for provider data
+    response = Faraday.get("https://api.themoviedb.org/3/tv/#{id}/watch/providers?api_key=#{ENV['TMDB_KEY']}")
+    return unless response.status == 200
+
+    JSON.parse(response.body)
+
+  end
+
+  def get_credits_by_id(id)
+    response = Faraday.get("https://api.themoviedb.org/3/tv/#{id}/credits?api_key=#{ENV['TMDB_KEY']}")
+    return unless response.status == 200
+
+    JSON.parse(response.body)
+
+  end
+
 end
