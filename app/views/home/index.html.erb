@@ -1,31 +1,64 @@
-<div>
+<h1 class="block text-2xl font-bold text-pink-500">Shows</h1>
+<div class="block">
   <h1>Find Shows</h1>
-  <p>Search below to find shows. The data comes from TDMB</p>
+  <p>Search below to find shows. The data comes from TMDB</p>
 </div>
-<div class="mb-5">
-<%= form_with url: home_index_url, method: :get do |form| %>
+<div class="block mb-5">
+  <%= form_with url: home_index_url, method: :get do |form| %>
     <%= form.label :search, "Search for shows:", class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
     <%= form.text_field :search, class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-    <%= form.submit "Search" %>
-<% end %>
+    <%= form.submit "Search", class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+  <% end %>
 </div>
 
-<% if false %>
-    <turbo_frame id="show-data">
+<% if params[:search] %>
+  <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
     <% @data.each do |data| %>
-    <div class="mb-3">
+      <div class="m-2">
+        <%= image_tag("https://image.tmdb.org/t/p/w500/#{data['poster_path']}", class: "object-contain h-80 w-120")%>
         <ul id=<%= data['id'] %>>
-            <%# data %>
-            <%= image_tag("https://image.tmdb.org/t/p/w500/#{data['poster_path']}", class: "object-contain h-80 w-120")%>
-            <li>Name: <%= data['name']%> </li>
-            <li> Original Language: <%= data['original_language'] %> </li>
-            <li>Original Name: <%= data['original_name']%> </li>   
-            <li>Overview: <%= data['overview']%></li>
-            <li> First Air Date: <%= data['first_air_date'] %></li>
+          <li>Name: <%= data['name']%> </li>
+          <li> Original Language: <%= data['original_language'] %> </li>
+          <li>Original Name: <%= data['original_name']%> </li>
+          <li>Overview: <%= data['overview']%></li>
+          <li> First Air Date: <%= data['first_air_date'] %></li>
         </ul>
-        <%= link_to "New viewing", new_viewing_path(tmdb_id: data['id'].to_i, original_name: data['original_name'], original_language: data['original_language'], name: data['name'], poster_path: data['poster_path'], overview: data['overview']), class: "inline-block text-sm px-4 py-2 leading-none border rounded border-amber-900 hover:border-transparent hover:bg-white mt-4 lg:mt-0 text-amber-900 hover:text-amber-950" %>
-        <%# link_to new_viewing_path(data['id'])%>
-    </div>
+        <%= link_to "More Info", home_show_path(tmdb_id: data['id'].to_i),
+                    class: "inline-block text-sm px-4 py-2 leading-none border rounded border-amber-900 hover:border-transparent
+                                     hover:bg-white mt-4 lg:mt-0 text-amber-900 hover:text-amber-950" %>
+        <%= link_to "New viewing", new_viewing_path(tmdb_id: data['id'].to_i,
+                                                    original_name: data['original_name'], original_language: data['original_language'],
+                                                    name: data['name'], poster_path: data['poster_path'], overview: data['overview']),
+                    class: "inline-block text-sm px-4 py-2 leading-none border rounded border-amber-900 hover:border-transparent
+                                     hover:bg-white mt-4 lg:mt-0 text-amber-900 hover:text-amber-950" %>
+      </div>
     <% end %>
-    </turbo_frame>
+  </div>
+<% end %>
+<% if @recent_shows != nil %>
+  <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+    <% @recent_shows['results'].each do |data| %>
+      <div class="m-2">
+        <%= image_tag("https://image.tmdb.org/t/p/w500/#{data['poster_path']}", class: "object-contain h-80 w-120")%>
+        <ul id=<%= data['id'] %>>
+          <li>Name: <%= data['name']%> </li>
+          <li> Original Language: <%= data['original_language'] %> </li>
+          <li>Original Name: <%= data['original_name']%> </li>
+          <li>Overview: <%= data['overview']%></li>
+          <li> First Air Date: <%= data['first_air_date'] %></li>
+        </ul>
+        <%= link_to "More Info", home_show_path(tmdb_id: data['id'].to_i),
+                    class: "inline-block text-sm px-4 py-2 leading-none border rounded border-amber-900 hover:border-transparent
+                                     hover:bg-white mt-4 lg:mt-0 text-amber-900 hover:text-amber-950" %>
+        <%= link_to "New viewing", new_viewing_path(tmdb_id: data['id'].to_i,
+                                                    original_name: data['original_name'], original_language: data['original_language'],
+                                                    name: data['name'], poster_path: data['poster_path'], overview: data['overview']),
+                    class: "inline-block text-sm px-4 py-2 leading-none border rounded border-amber-900 hover:border-transparent
+                                     hover:bg-white mt-4 lg:mt-0 text-amber-900 hover:text-amber-950" %>
+      </div>
+      <% end %>
+  </div>
+  <% else %>
+  <h1>Failed to pull data</h1>
 <% end %>

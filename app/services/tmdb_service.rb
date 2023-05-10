@@ -55,4 +55,12 @@ class TmdbService
 
   end
 
+  def get_recent_shows
+    response = Faraday.get("https://api.themoviedb.org/3/trending/tv/week?api_key=#{ENV['TMDB_KEY']}")
+    return unless response.status == 200
+
+    JSON.parse(response.body)
+
+  end
+
 end

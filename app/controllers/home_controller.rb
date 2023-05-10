@@ -4,11 +4,15 @@ require 'json'
 
 # holds non-saved data
 class HomeController < ApplicationController
+
   def index
+    hash = TmdbService.new
+    @recent_shows = hash.get_recent_shows
+
     return unless params[:search]
 
     #  search = params[:search]
-    hash = TmdbService.new
+    # hash = TmdbService.new
     @data = hash.get_show_by_title(params[:search])
     # if response body 1== @data = "thi doesn't work"
 
