@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/privacy'
   get 'home/tmdb'
+  get 'home/show'
+  get 'home/season'
   resources :friendships
   resources :reviews
   resources :viewings, path: 'watch-list'

@@ -4,7 +4,7 @@
   <p>Search below to find shows. The data comes from TDMB</p>
 </div>
 <div class="block mb-5">
-  <%= form_with url: home_index_url, method: :get do |form| %>
+  <%= form_with url: shows_url, method: :get do |form| %>
     <%= form.label :search, "Search for shows:", class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
     <%= form.text_field :search, class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
     <%= form.submit "Search", class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
@@ -13,7 +13,7 @@
 </div>
 
 <% if params[:search] %>
-    <div class="grid gap-4 grid-cols-4">
+    <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
       <% @data.each do |data| %>
         <div class="m-2">
           <%= image_tag("https://image.tmdb.org/t/p/w500/#{data['poster_path']}", class: "object-contain h-80 w-120")%>
@@ -24,6 +24,9 @@
             <li>Overview: <%= data['overview']%></li>
             <li> First Air Date: <%= data['first_air_date'] %></li>
           </ul>
+          <%= link_to "More Info", home_show_path(tmdb_id: data['id'].to_i),
+                      class: "inline-block text-sm px-4 py-2 leading-none border rounded border-amber-900 hover:border-transparent
+                                     hover:bg-white mt-4 lg:mt-0 text-amber-900 hover:text-amber-950" %>
           <%= link_to "New viewing", new_viewing_path(tmdb_id: data['id'].to_i,
                                      original_name: data['original_name'], original_language: data['original_language'],
                                      name: data['name'], poster_path: data['poster_path'], overview: data['overview']),
@@ -33,7 +36,7 @@
       <% end %>
     </div>
 <% else %>
-    <div id="shows" class="grid gap-4 grid-cols-4">
+    <div id="shows" class="grid gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
       <% @shows.each do |show| %>
         <div class="m-3">
         <%= render show %>
