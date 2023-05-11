@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'home/show'
   get 'home/season'
   resources :friendships
+  get 'friends/create/:id', to: 'friendships#create', as: 'add_friend'
   resources :reviews
   resources :viewings, path: 'watch-list'
   devise_for :users

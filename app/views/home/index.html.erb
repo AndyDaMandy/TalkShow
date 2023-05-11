@@ -7,12 +7,13 @@
   <%= form_with url: home_index_url, method: :get do |form| %>
     <%= form.label :search, "Search for shows:", class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
     <%= form.text_field :search, class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-    <%= form.submit "Search", class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
-                        text-sm px-5 py-2.5 my-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+    <%= form.submit "Search", class: "text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-blue-800" %>
   <% end %>
 </div>
 
 <% if params[:search] %>
+  <h1 class="block font-2xl text-pink-500 font-bold">Search Results</h1>
   <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
     <% @data.each do |data| %>
       <div class="m-2">
@@ -25,18 +26,19 @@
           <li> First Air Date: <%= data['first_air_date'] %></li>
         </ul>
         <%= link_to "More Info", home_show_path(tmdb_id: data['id'].to_i),
-                    class: "inline-block text-sm px-4 py-2 leading-none border rounded border-amber-900 hover:border-transparent
-                                     hover:bg-white mt-4 lg:mt-0 text-amber-900 hover:text-amber-950" %>
+                    class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-blue-800" %>
         <%= link_to "New viewing", new_viewing_path(tmdb_id: data['id'].to_i,
                                                     original_name: data['original_name'], original_language: data['original_language'],
                                                     name: data['name'], poster_path: data['poster_path'], overview: data['overview']),
-                    class: "inline-block text-sm px-4 py-2 leading-none border rounded border-amber-900 hover:border-transparent
-                                     hover:bg-white mt-4 lg:mt-0 text-amber-900 hover:text-amber-950" %>
+                    class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-blue-800" %>
       </div>
     <% end %>
   </div>
-<% end %>
+<% else %>
 <% if @recent_shows != nil %>
+  <h1 class="block font-2xl text-pink-500 font-bold">Trending Shows</h1>
   <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
     <% @recent_shows['results'].each do |data| %>
       <div class="m-2">
@@ -49,16 +51,17 @@
           <li> First Air Date: <%= data['first_air_date'] %></li>
         </ul>
         <%= link_to "More Info", home_show_path(tmdb_id: data['id'].to_i),
-                    class: "inline-block text-sm px-4 py-2 leading-none border rounded border-amber-900 hover:border-transparent
-                                     hover:bg-white mt-4 lg:mt-0 text-amber-900 hover:text-amber-950" %>
-        <%= link_to "New viewing", new_viewing_path(tmdb_id: data['id'].to_i,
+                    class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-blue-800" %>
+        <%= link_to "Add to Watch List", new_viewing_path(tmdb_id: data['id'].to_i,
                                                     original_name: data['original_name'], original_language: data['original_language'],
                                                     name: data['name'], poster_path: data['poster_path'], overview: data['overview']),
-                    class: "inline-block text-sm px-4 py-2 leading-none border rounded border-amber-900 hover:border-transparent
-                                     hover:bg-white mt-4 lg:mt-0 text-amber-900 hover:text-amber-950" %>
+                    class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-blue-800" %>
       </div>
       <% end %>
   </div>
   <% else %>
-  <h1>Failed to pull data</h1>
+    <h1 class="text-red-500 font-bold text-2xl">Failed to pull data</h1>
+  <% end %>
 <% end %>

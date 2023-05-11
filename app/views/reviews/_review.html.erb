@@ -1,17 +1,39 @@
-<div id="<%= dom_id review %>">
-  <p>
-    <strong>Rating:</strong>
-    <%= review.rating %>
-  </p>
+<div id="<%= dom_id review %>" class="m-3">
+  <div class="mb-1">
+    <p>
+      <strong>Rating:</strong>
+      <%= review.rating %>/5 Stars
+    </p>
 
-  <p>
-    <strong>Recommend:</strong>
-    <%= review.recommend %>
-  </p>
+    <p>
+      <strong>Recommend:</strong>
+      <%= review.recommend %>
+    </p>
 
-  <p>
-    <strong>Review:</strong>
-    <%= review.content %>
-  </p>
-  <%# render 'shows/show' %>
+    <p>
+      <strong>Review:</strong>
+      <%= review.content %>
+    </p>
+  </div>
+  <% @show = Show.where(tmdb_id: review.tmdb_id).first! %>
+  <div>
+    <%= link_to home_show_path(tmdb_id: review.tmdb_id) do %>
+      <%= image_tag("https://image.tmdb.org/t/p/w500/#{@show.poster_path}", class: "object-contain h-80 w-120")%>
+    <% end %>
+    <p>
+      <strong>Original language:</strong>
+      <%= @show.original_language %>
+    </p>
+
+    <p>
+      <strong>Original name:</strong>
+      <%= @show.original_name %>
+    </p>
+
+    <p>
+      <strong>Name:</strong>
+      <%= @show.name %>
+    </p>
+  </div>
+  <%= link_to "Show this review", review %>
 </div>

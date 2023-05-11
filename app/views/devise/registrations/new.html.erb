@@ -4,45 +4,45 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="mb-3">
-    <%= f.label :email, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+    <%= f.label :email, class: "block uppercase text-gray-700 text-xs font-bold" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "shadow appearance-none border rounded px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
 
   <div class="mb-3">
-    <%= f.label :password, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold" %>
+    <%= f.label :password, class: "block uppercase text-gray-700 text-xs font-bold" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2"  %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "shadow appearance-none border roundedpx-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2"  %>
   </div>
 
   <div class="mb-3">
-    <%= f.label :password_confirmation, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
+    <%= f.label :password_confirmation, class: "block uppercase text-gray-700 text-xs font-bold" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "shadow appearance-none border rounded px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
   </div>
   <div class="mb-3">
-    <%= f.label :username, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold" %><br />
-    <%= f.text_field :username, autocomplete: "username", class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
+    <%= f.label :username, class: "block uppercase  text-gray-700 text-xs font-bold" %><br />
+    <%= f.text_field :username, autocomplete: "username", class: "shadow appearance-none border rounded  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
   </div>
   <div class="mb-3">
-    <%= f.label :first_name, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold"%><br />
-    <%= f.text_field :first_name, autocomplete: "first name", class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
+    <%= f.label :first_name, class: "block uppercase text-gray-700 text-xs font-bold"%><br />
+    <%= f.text_field :first_name, autocomplete: "first name", class: "shadow appearance-none border rounded  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
   </div>
   <div class="mb-3">
-    <%= f.label :last_name, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold" %><br />
-    <%= f.text_field :last_name, autocomplete: "last name", class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
+    <%= f.label :last_name, class: "block uppercase text-gray-700 text-xs font-bold" %><br />
+    <%= f.text_field :last_name, autocomplete: "last name", class: "shadow appearance-none border rounded px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
   </div>
   <div class="mb-3">
-    <%= f.label :words_to_live_by, "Words to live by", class: "block uppercase tracking-wide text-gray-700 text-xs font-bold" %><br />
-    <%= f.text_field :words_to_live_by, autocomplete: "Words to live by", class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
+    <%= f.label :words_to_live_by, "Words to live by", class: "block uppercase text-gray-700 text-xs font-bold" %><br />
+    <%= f.text_field :words_to_live_by, autocomplete: "Words to live by", class: "shadow appearance-none border rounded px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
   </div>
   <div class="mb-3">
-    <%= f.label :age, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold" %><br />
-    <%= f.number_field :age, class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
+    <%= f.label :age, class: "block uppercase text-gray-700 text-xs font-bold" %><br />
+    <%= f.number_field :age, class: "shadow appearance-none border rounded px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", max: 100, min: 13 %>
   </div>
   <div class="mb-3">
-    <%= f.label :location, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold" %><br />
-    <%= f.text_field :location, class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
+    <%= f.label :location, class: "block uppercase text-gray-700 text-xs font-bold" %><br />
+    <%= f.text_field :location, class: "shadow appearance-none border rounded px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
   </div>
 
   <div class="actions">
@@ -50,4 +50,5 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= render "devise/shared/links", class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>

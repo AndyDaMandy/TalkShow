@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates :username, presence: true, length: { minimum: 3, maximum: 35 }
   validates :first_name, presence: true, length: { minimum: 1, maximum: 40 }
   validates :last_name, presence: true, length: { minimum: 1, maximum: 40 }
+  validates :age, numericality: { more_than_or_equal_to: 13, less_than_or_equal_to: 100, only_integer: true }
 
   has_many :friendships
   has_many :friends, through: :friendships

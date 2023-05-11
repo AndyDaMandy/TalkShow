@@ -15,6 +15,7 @@
         <% end %>
       </ul>
       <% unless @providers.empty? %>
+        <p>Streaming services you can watch via:</p>
         <p>This data is provided by JustWatch via Tmdb</p>
         <div class="grid gap-1 grid-flow-row grid-cols-3">
           <% @providers['results']['US']['flatrate'].each do |provider| %>
@@ -55,8 +56,8 @@
               <div class="my-4">
                 <%= link_to "View Season Info",
                             home_season_path(tmdb_id: @data['id'], season_number: season['season_number']),
-                            class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
-                        text-sm px-5 py-2.5 my-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+                            class: "text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-blue-800" %>
               </div>
               <hr />
           <% end %>

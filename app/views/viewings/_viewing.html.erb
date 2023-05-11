@@ -24,8 +24,8 @@
     </p>
     <%= link_to 'Write a review of this show',
                 new_review_path(viewing_id: viewing.id, tmdb_id: viewing.tmdb_id),
-                class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium
-                rounded-lg text-sm px-5 py-2.5 my-3 dark:bg-blue-600 dark:hover:bg-blue-700
+                class: "text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-blue-300 font-medium
+                rounded-lg text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700
                 focus:outline-none dark:focus:ring-blue-800" %>
   <% end %>
   </div>
@@ -65,8 +65,8 @@
                                                 episode_count: season['episode_count'], tmdb_id: viewing.tmdb_id,
                                                 content_id: season['id'], viewing_id: viewing.id,
                                                 overview: season['overview'], show_id: @show),
-                        class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
-                        text-sm px-5 py-2.5 my-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+                        class: "text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-blue-800" %>
             </div>
             <hr />
             <% end %>

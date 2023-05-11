@@ -2,11 +2,8 @@
 
 <h1>Reviews</h1>
 
-<div id="reviews">
+<div id="reviews" class="grid gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
   <% @reviews.each do |review| %>
     <%= render review %>
-    <p>
-      <%= link_to "Show this review", review %>
-    </p>
   <% end %>
 </div>
