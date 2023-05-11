@@ -11,6 +11,8 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { minimum: 1, maximum: 40 }
   validates :last_name, presence: true, length: { minimum: 1, maximum: 40 }
   validates :age, numericality: { more_than_or_equal_to: 13, less_than_or_equal_to: 100, only_integer: true }
+  validates :words_to_live_by, length: { maximum: 300 }
+  validates :location, length: { maximum: 120 }
 
   has_many :friendships
   has_many :friends, through: :friendships
@@ -18,5 +20,11 @@ class User < ApplicationRecord
   has_many :inverse_friends, through: :inverse_friendships, source: :user
   has_many :reviews
   has_many :viewings
+
+  enum role: %i[user moderator admin]
+  after_initialize :set_default_role, if: :new_record?
+  def set_default_role
+    self.role ||= :user
+  end
 
 end

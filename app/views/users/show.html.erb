@@ -1,9 +1,10 @@
-<h1>Show</h1>
-
 <div class="my-3">
   <ul>
     <li>First Name: <%= @user.first_name %></li>
     <li>Last Name:<%= @user.last_name %></li>
+    <li>Age: <%= @user.age %></li>
+    <li>Words to Live by: <%= @user.words_to_live_by %></li>
+    <li>Location: <%= @user.location %></li>
     <% if user_signed_in? && @user != current_user %>
       <li><%= button_to "Add Friend", friendships_path(friend_id: @user), :method => :post %></li>
     <% end %>
@@ -34,10 +35,11 @@
 
 
 <% end %>
-<div>
-  <h2 class="mb-2">Watch List:</h2>
+<h2 class="mb-2 text-xl">Watch List</h2>
+<div class="grid gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
   <% @user.viewings.each do |viewing| %>
     <% @show = Show.where(tmdb_id: viewing.tmdb_id).first! %>
+    <div>
     <ul>
       <p>
         <strong>Status:</strong>
@@ -50,5 +52,6 @@
       <li>Original Name: <%= @show.original_name %> </li>
       <li>Overview: <%= @show.overview %></li>
     </ul>
+    </div>
   <% end %>
 </div>

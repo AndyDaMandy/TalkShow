@@ -1,22 +1,36 @@
 <div id="<%= dom_id review %>" class="m-3">
   <div class="mb-1">
     <p>
+      <strong>Viewer: </strong><%= review.user.first_name %> <%= review.user.last_name %>
+    </p>
+    <p>
       <strong>Rating:</strong>
       <%= review.rating %>/5 Stars
     </p>
 
     <p>
-      <strong>Recommend:</strong>
-      <%= review.recommend %>
+      <strong>Would I recommend?</strong>
+      <% if review.recommend == 'no_judgement' %>
+        "No Judgement"
+      <% elsif review.recommend == 'no'%>
+        "Don't Recommend"
+        <%elsif review.recommend == 'maybe' %>
+        "Maybe"
+        <% elsif review.recommend == 'yes' %>
+        "I recommend this show"
+        <% else %>
+        "Error"
+      <% end %>
     </p>
-
-    <p>
-      <strong>Review:</strong>
-      <%= review.content %>
-    </p>
+    <% if action_name == 'show' %>
+      <p>
+        <strong>Review:</strong>
+        <%= review.content %>
+      </p>
+    <% end %>
   </div>
   <% @show = Show.where(tmdb_id: review.tmdb_id).first! %>
-  <div>
+  <div class="mb-2">
     <%= link_to home_show_path(tmdb_id: review.tmdb_id) do %>
       <%= image_tag("https://image.tmdb.org/t/p/w500/#{@show.poster_path}", class: "object-contain h-80 w-120")%>
     <% end %>
@@ -35,5 +49,6 @@
       <%= @show.name %>
     </p>
   </div>
-  <%= link_to "Show this review", review %>
+  <%= link_to "Read Review", review, class: "text-white bg-pink-700 hover:bg-pink-800 focus:ring-4
+      focus:ring-pink-300 font-medium rounded-lg text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800" %>
 </div>
