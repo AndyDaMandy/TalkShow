@@ -1,5 +1,5 @@
 <div>
-  <% if !@data.empty? %>
+  <% if @data != nil %>
     <div>
         <%= image_tag("https://image.tmdb.org/t/p/w500/#{@data['poster_path']}", class: "object-contain h-80 w-120")%>
       <ul>
@@ -14,21 +14,24 @@
           <li>Genre: <%= genre['name'] %></li>
         <% end %>
       </ul>
-      <% unless @providers.empty? %>
+      <% if @providers != nil %>
         <p>Streaming services you can watch via:</p>
         <p>This data is provided by JustWatch via Tmdb</p>
         <div class="grid gap-1 grid-flow-row grid-cols-3">
+         <% if  @providers['results']['US'] != nil %>
           <% @providers['results']['US']['flatrate'].each do |provider| %>
             <div class="m-2">
               <%= image_tag("https://image.tmdb.org/t/p/w200/#{provider['logo_path']}", class: "object-contain w-20") %>
               <p><% provider['name'] %></p>
             </div>
           <% end %>
+        <% end %>
       <%  end %>
       </div>
-      <% unless @credits.empty? %>
+      <% if @credits != nil %>
         <!-- parent for credits -->
         <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+          <% if @credits['cast'] != nil %>
           <% @credits['cast'].each do |credit| %>
             <div class="m-2">
               <%= image_tag("https://image.tmdb.org/t/p/w300/#{credit['profile_path']}", class: "object-contain h-80 w-100") %>
@@ -38,6 +41,7 @@
               </ul>
             </div>
           <% end %>
+        <% end %>
       <% end %>
       </div>
       <h3 class="mb-3 text-2xl font-bold">Seasons</h3>
@@ -67,7 +71,7 @@
     </div>
   <% else %>
     <p>
-      <strong>We had trouble pulling the data</strong>
+      <strong>We had trouble pulling information about this show. Try again later!</strong>
     </p>
 
   <% end %>
