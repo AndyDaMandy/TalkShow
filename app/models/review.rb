@@ -7,5 +7,5 @@ class Review < ApplicationRecord
 
   validates :rating, length: { minimum: 0, maximum: 5 }
   enum recommend: %i[no_judgement no maybe yes]
-  # enum rating: %i[zero one two three four five]
+
 end

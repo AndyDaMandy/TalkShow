@@ -28,10 +28,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_14_010651) do
     t.integer "friend_id"
     t.bigint "show_id", null: false
     t.integer "tmdb_id"
+    t.bigint "friendship_id"
+    t.bigint "{:null=>false, :foreign_key=>true}_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["friendship_id"], name: "index_recommends_on_friendship_id"
     t.index ["show_id"], name: "index_recommends_on_show_id"
     t.index ["user_id"], name: "index_recommends_on_user_id"
+    t.index ["{:null=>false, :foreign_key=>true}_id"], name: "index_recommends_on_{:null=>false, :foreign_key=>true}_id"
   end
 
   create_table "reviews", force: :cascade do |t|

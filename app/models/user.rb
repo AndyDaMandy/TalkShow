@@ -14,12 +14,13 @@ class User < ApplicationRecord
   validates :words_to_live_by, length: { maximum: 300 }
   validates :location, length: { maximum: 120 }
 
-  has_many :friendships
+  has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :inverse_friends, through: :inverse_friendships, source: :user
-  has_many :reviews
-  has_many :viewings
+  has_many :reviews, dependent: :destroy
+  has_many :viewings, dependent: :destroy
+  has_many :recommends, dependent: :destroy
 
   enum role: %i[user moderator admin]
   after_initialize :set_default_role, if: :new_record?
