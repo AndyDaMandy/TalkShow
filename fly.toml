@@ -1,42 +1,47 @@
-# fly.toml app configuration file generated for summer-sea-6826 on 2023-05-09T14:18:29-04:00
+# fly.toml app configuration file generated for winter-grass-5043 on 2023-05-13T20:58:11-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "summer-sea-6826"
-primary_region = "ewr"
+app = "winter-grass-5043"
 kill_signal = "SIGINT"
-kill_timeout = "5s"
+kill_timeout = 5
+primary_region = "ewr"
+processes = []
+
+[build]
+
+[env]
 
 [experimental]
   auto_rollback = true
 
-[env]
-  PRIMARY_REGION = "ewr"
-
 [[services]]
-  protocol = "tcp"
+  http_checks = []
   internal_port = 3000
+  min_machines_running = 0
   processes = ["app"]
-
-  [[services.ports]]
-    port = 80
-    handlers = ["http"]
-    force_https = true
-
-  [[services.ports]]
-    port = 443
-    handlers = ["tls", "http"]
+  protocol = "tcp"
+  script_checks = []
   [services.concurrency]
-    type = "connections"
     hard_limit = 25
     soft_limit = 20
+    type = "connections"
+
+  [[services.ports]]
+    force_https = true
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
 
   [[services.tcp_checks]]
-    interval = "15s"
-    timeout = "2s"
     grace_period = "1s"
+    interval = "15s"
     restart_limit = 0
+    timeout = "2s"
 
 [[statics]]
   guest_path = "/rails/public"

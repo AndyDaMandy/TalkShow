@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :chats
   resources :recommends
   resources :seasons
   resources :season_viewings, path: 'season-watch-list'

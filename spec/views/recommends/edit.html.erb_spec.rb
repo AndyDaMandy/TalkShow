@@ -4,7 +4,7 @@ RSpec.describe "recommends/edit", type: :view do
   let(:recommend) {
     Recommend.create!(
       user: nil,
-      friend: nil,
+      friend_id: 1,
       show: nil,
       tmdb_id: 1
     )

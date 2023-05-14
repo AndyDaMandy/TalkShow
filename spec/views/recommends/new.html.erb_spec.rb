@@ -4,7 +4,7 @@ RSpec.describe "recommends/new", type: :view do
   before(:each) do
     assign(:recommend, Recommend.new(
       user: nil,
-      friend: nil,
+      friend_id: 1,
       show: nil,
       tmdb_id: 1
     ))
