@@ -1,26 +1,28 @@
-<h2>Log in</h2>
+<h2 class="block text-2xl text-pink-500 font-bold">Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, class: "uppercase text-gray-700 text-xs font-bold" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "shadow appearance-none border rounded px-3 text-gray-700
+    leading-tight focus:outline-none focus:shadow-outline"  %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.label :password, class: "uppercase text-gray-700 text-xs font-bold" %><br />
+    <%= f.password_field :password, autocomplete: "current-password", class: "shadow appearance-none border rounded px-3 text-gray-700 leading-tight
+    focus:outline-none focus:shadow-outline"  %>
   </div>
 
   <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label :remember_me, class: "uppercase text-gray-700 text-xs font-bold" %>
     </div>
   <% end %>
 
   <div class="actions">
     <%= f.submit "Log in", class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg
-                        text-sm px-5 py-2.5 my-3 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800" %>
   </div>
 <% end %>
 
