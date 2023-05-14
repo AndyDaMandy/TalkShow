@@ -36,4 +36,9 @@ class HomeController < ApplicationController
 
   def tmdb
   end
+
+  def people
+    hash = TmdbService.new
+  end
+
 end

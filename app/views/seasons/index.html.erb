@@ -1,14 +1,13 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Seasons</h1>
 
 <div id="seasons">
   <% @seasons.each do |season| %>
     <%= render season %>
     <p>
-      <%= link_to "Show this season", season %>
+      <%= link_to "Show this season", season, class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800" %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New season", new_season_path %>
+<%# link_to "New season", new_season_path %>

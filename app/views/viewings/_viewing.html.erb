@@ -37,7 +37,7 @@
                 focus:outline-none dark:focus:ring-pink-800" %>
   <% end %>
   </div>
-  <% if action_name == 'show' && !@data.empty? %>
+  <% if action_name == 'show' && @data != nil %>
     <div>
       <ul id=<%= viewing.tmdb_id %>>
         <%# data %>
