@@ -1,5 +1,5 @@
 <div id="<%= dom_id show %>">
-  <% if action_name == 'show' && !@data.empty? %>
+  <% if action_name == 'show' && @data != nil %>
     <div>
       <ul>
         <%= image_tag("https://image.tmdb.org/t/p/w500/#{@data['poster_path']}", class: "object-contain h-80 w-120")%>
@@ -77,15 +77,14 @@
       <strong>Original name:</strong>
       <%= show.original_name %>
     </p>
+    <p>
+      <strong>Name:</strong>
+      <%= show.name %>
+    </p>
 
     <p>
       <strong>Overview:</strong>
       <%= show.overview %>
-    </p>
-
-    <p>
-      <strong>Name:</strong>
-      <%= show.name %>
     </p>
   <% end %>
 
