@@ -35,6 +35,8 @@
       </div>
     <% end %>
   </div>
+<% elsif params[:search] && @recent_shows == nil%>
+  <h1 class="text-red-500 font-bold text-2xl">Failed to connect to TMDB, thus the search didn't work. Try again later</h1>
 <% else %>
 <% if @recent_shows != nil %>
   <h1 class="block font-2xl text-pink-500 font-bold">Trending Shows</h1>
@@ -44,7 +46,7 @@
         <%= image_tag("https://image.tmdb.org/t/p/w500/#{data['poster_path']}", class: "object-contain h-80 w-120")%>
         <ul id=<%= data['id'] %>>
           <li>Name: <%= data['name']%> </li>
-          <li> Original Language: <%= data['original_language'] %> </li>
+          <li>Original Language: <%= data['original_language'] %> </li>
           <li>Original Name: <%= data['original_name']%> </li>
           <li>Overview: <%= data['overview']%></li>
           <li> First Air Date: <%= data['first_air_date'] %></li>
@@ -61,6 +63,6 @@
       <% end %>
   </div>
   <% else %>
-    <h1 class="text-red-500 font-bold text-2xl">Failed to pull data</h1>
+    <h1 class="text-red-500 font-bold text-2xl">Failed to connect to TMDB. Try again later</h1>
   <% end %>
 <% end %>

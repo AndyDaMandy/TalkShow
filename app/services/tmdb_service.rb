@@ -5,11 +5,14 @@ require 'json'
 # Service for connecting to the Tmdb Api
 class TmdbService
   # BASE_URL = 'https://api.themoviedb.org/3/'
+  # If the service fails or the response code isn't good, it returns nil
   def get_show_by_title(query)
     response = Faraday.get("https://api.themoviedb.org/3/search/tv?api_key=#{ENV['TMDB_KEY']}&query=#{query}")
     return unless response.status == 200
 
     JSON.parse(response.body)['results']
+  rescue StandardError
+    nil
 
   end
 
@@ -18,6 +21,8 @@ class TmdbService
     return unless response.status == 200
 
     JSON.parse(response.body)
+  rescue StandardError
+    nil
 
   end
 
@@ -27,6 +32,8 @@ class TmdbService
     return unless response.status == 200
 
     JSON.parse(response.body)
+  rescue StandardError
+    nil
 
   end
 
@@ -35,6 +42,8 @@ class TmdbService
     return unless response.status == 200
 
     JSON.parse(response.body)
+  rescue StandardError
+    nil
 
   end
 
@@ -44,6 +53,8 @@ class TmdbService
     return unless response.status == 200
 
     JSON.parse(response.body)
+  rescue StandardError
+    nil
 
   end
 
@@ -52,14 +63,20 @@ class TmdbService
     return unless response.status == 200
 
     JSON.parse(response.body)
+  rescue StandardError
+    nil
 
   end
 
   def get_recent_shows
+
     response = Faraday.get("https://api.themoviedb.org/3/trending/tv/week?api_key=#{ENV['TMDB_KEY']}")
     return unless response.status == 200
 
     JSON.parse(response.body)
+  rescue StandardError
+    nil
+
 
   end
 
@@ -68,6 +85,8 @@ class TmdbService
     return unless response.status == 200
 
     JSON.parse(response.body)
+  rescue StandardError
+    nil
 
   end
 
