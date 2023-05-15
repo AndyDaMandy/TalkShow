@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# users
 class RecommendsController < ApplicationController
-  before_action :set_recommend, only: %i[ show edit update destroy ]
+  before_action :set_recommend, only: %i[show edit update destroy]
 
   # GET /recommends or /recommends.json
   def index
@@ -13,15 +16,20 @@ class RecommendsController < ApplicationController
   # GET /recommends/new
   def new
     @recommend = Recommend.new
+    @friends = current_user.friends
+    @friendships = current_user.friendships
+    @show = Show.where(tmdb_id: params[:tmdb_id]).first!
   end
 
   # GET /recommends/1/edit
   def edit
   end
 
+  # the create action will be how we build the app. It will preload the show params and pull friends via a dropdown
   # POST /recommends or /recommends.json
   def create
     @recommend = Recommend.new(recommend_params)
+    @recommend.user = current_user
 
     respond_to do |format|
       if @recommend.save
@@ -65,6 +73,6 @@ class RecommendsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recommend_params
-      params.require(:recommend).permit(:user_id, :friend_id, :show_id, :tmdb_id)
+      params.require(:recommend).permit(:user_id, :friend_id, :friendship_id, :show_id, :tmdb_id)
     end
 end
