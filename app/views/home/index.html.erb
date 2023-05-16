@@ -21,7 +21,7 @@
           <li>Name: <%= data['name']%> </li>
           <li> Original Language: <%= data['original_language'] %> </li>
           <li>Original Name: <%= data['original_name']%> </li>
-          <li>Overview: <%= data['overview']%></li>
+         <!-- <li>Overview: <%# data['overview']%></li> -->
           <li> First Air Date: <%= data['first_air_date'] %></li>
         </ul>
         <%= link_to "More Info", home_show_path(tmdb_id: data['id'].to_i),
@@ -48,7 +48,7 @@
           <li>Name: <%= data['name']%> </li>
           <li>Original Language: <%= data['original_language'] %> </li>
           <li>Original Name: <%= data['original_name']%> </li>
-          <li>Overview: <%= data['overview']%></li>
+          <!--<li>Overview: <%# data['overview']%></li> -->
           <li> First Air Date: <%= data['first_air_date'] %></li>
         </ul>
         <%= link_to "More Info", home_show_path(tmdb_id: data['id'].to_i),
