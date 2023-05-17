@@ -36,7 +36,7 @@ class RecommendsController < ApplicationController
 
     respond_to do |format|
       if @recommend.save
-        format.html { redirect_to recommend_url(@recommend), notice: "Recommend was successfully created." }
+        format.html { redirect_to recommend_url(@recommend), notice: "Recommendation was successfully created." }
         format.json { render :show, status: :created, location: @recommend }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -49,7 +49,7 @@ class RecommendsController < ApplicationController
   def update
     respond_to do |format|
       if @recommend.update(recommend_params)
-        format.html { redirect_to recommend_url(@recommend), notice: "Recommend was successfully updated." }
+        format.html { redirect_to recommend_url(@recommend), notice: "Recommendation was successfully updated." }
         format.json { render :show, status: :ok, location: @recommend }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -63,19 +63,20 @@ class RecommendsController < ApplicationController
     @recommend.destroy
 
     respond_to do |format|
-      format.html { redirect_to recommends_url, notice: "Recommend was successfully destroyed." }
+      format.html { redirect_to recommends_url, notice: "Recommendation was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
+  
     # Use callbacks to share common setup or constraints between actions.
-    def set_recommend
-      @recommend = Recommend.find(params[:id])
-    end
+  def set_recommend
+    @recommend = Recommend.find(params[:id])
+  end
 
     # Only allow a list of trusted parameters through.
-    def recommend_params
-      params.require(:recommend).permit(:user_id, :friend_id, :friendship_id, :show_id, :tmdb_id)
-    end
+  def recommend_params
+    params.require(:recommend).permit(:user_id, :friend_id, :friendship_id, :show_id, :tmdb_id)
+  end
 end
