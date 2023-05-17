@@ -1,22 +1,29 @@
 <div id="<%= dom_id recommend %>">
-  <p>
-    <strong>User:</strong>
-    <%= recommend.user_id %>
-  </p>
 
   <p>
     <strong>Friend:</strong>
-    <%= recommend.friend_id %>
+    <%= recommend.friendship.friend.first_name %> <%= recommend.friendship.friend.last_name %>
+  </p>
+  <%= link_to show_path(recommend.show) do %>
+  <%= image_tag("https://image.tmdb.org/t/p/w500/#{recommend.show.poster_path}", class: "object-contain h-80 w-120")%>
+  <% end %>
+  <p>
+    <strong>Original language:</strong>
+    <%= recommend.show.original_language %>
   </p>
 
   <p>
-    <strong>Show:</strong>
-    <%= recommend.show_id %>
+    <strong>Original name:</strong>
+    <%= recommend.show.original_name %>
+  </p>
+  <p>
+    <strong>Name:</strong>
+    <%= recommend.show.name %>
   </p>
 
   <p>
-    <strong>Tmdb:</strong>
-    <%= recommend.tmdb_id %>
+    <strong>Overview:</strong>
+    <%= recommend.show.overview %>
   </p>
 
 </div>

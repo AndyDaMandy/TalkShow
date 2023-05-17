@@ -28,8 +28,11 @@ class RecommendsController < ApplicationController
   # the create action will be how we build the app. It will preload the show params and pull friends via a dropdown
   # POST /recommends or /recommends.json
   def create
+    @friendship = Friendship.where(friend_id: recommend_params[:friend_id]).first!
     @recommend = Recommend.new(recommend_params)
     @recommend.user = current_user
+    # @recommend.show = @show
+    @recommend.friendship = @friendship
 
     respond_to do |format|
       if @recommend.save

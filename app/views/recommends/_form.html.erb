@@ -13,25 +13,17 @@
 
     <%# form.hidden_field :user_id  %>
 
-
   <div>
     <%= form.label :friend_id, "Friends List:", style: "display: block" %>
     <%# form.hidden_field :friend_id %>
-    <%= form.collection_select :friend_id, current_user.friends.order(:last_name), :id, :username %>
-
+    <%= form.collection_select :friend_id, current_user.friends.order(:last_name), :id, :last_name %>
   </div>
+  <%= form.hidden_field :show_id, value: @show.id %>
+
+  <%= form.hidden_field :tmdb_id, value: params[:tmdb_id] %>
 
   <div>
-    <%= form.label :show_id, style: "display: block" %>
-    <%# form.text_field :show_id %>
-  </div>
-
-  <div>
-    <%= form.label :tmdb_id, style: "display: block" %>
-    <%# form.number_field :tmdb_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit "Create Recommendation", class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800 mr-4"  %>
   </div>
 <% end %>

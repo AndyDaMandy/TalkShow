@@ -5,7 +5,7 @@ class CreateRecommends < ActiveRecord::Migration[7.0]
       t.integer :friend_id
       t.references :show, null: false, foreign_key: true
       t.integer :tmdb_id
-      t.references :friendship, { null: false, foreign_key: true }
+      t.references :friendship, null: false, foreign_key: true
 
       t.timestamps
     end
