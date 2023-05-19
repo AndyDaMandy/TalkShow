@@ -39,6 +39,9 @@ class HomeController < ApplicationController
 
   def people
     hash = TmdbService.new
+
+    @person = hash.person_details(params[:tmdb_id])
+    @credits = hash.person_credits(params[:tmdb_id])
   end
 
 end

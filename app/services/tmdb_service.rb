@@ -103,10 +103,11 @@ class TmdbService
   end
 
   def person_credits(id)
-    response = Faraday.get("https://api.themoviedb.org/3/person/#{id}}/tv_credits?api_key=#{ENV['TMDB_KEY']}")
+    response = Faraday.get("https://api.themoviedb.org/3/person/#{id}/tv_credits?api_key=#{ENV['TMDB_KEY']}")
     return unless response.status == 200
 
-    JSON.parse(response.body)
+    arr = JSON.parse(response.body)
+    arr['cast']
   rescue StandardError
     nil
   end

@@ -1,0 +1,41 @@
+<div>
+  <% if @person != nil %>
+    <div>
+      <%= image_tag("https://image.tmdb.org/t/p/w500/#{@person['profile_path']}", class: "object-contain h-80 w-120")%>
+      <ul>
+        <li>Name: <%= @person['name'] %> </li>
+        <li>Name: <%= @person['place_of_birth'] %> </li>
+        <li>Name: <%= raw @person['biography'] %> </li>
+      </ul>
+      </div>
+      <h3 class="mb-3 text-2xl font-bold">Credits</h3>
+      <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+      <% if @credits != nil %>
+        <% @credits.each do |show| %>
+            <div id=<%= show['id'] %>, class="m-2">
+                <%= image_tag("https://image.tmdb.org/t/p/w500/#{show['poster_path']}", class: "object-contain h-80 w-120")%>
+                <ul>
+                  <li>Name: <%= show['name'] %> </li>
+                  <li>Original Language: <%= show['original_language'] %> </li>
+                  <li>Original Name: <%= show['original_name'] %> </li>
+                </ul>
+              <%= link_to "More Info", home_show_path(tmdb_id: show['id'].to_i),
+                          class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
+                          text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800" %>
+                <% if user_signed_in? %>
+                  <%= link_to "Add to Watch List", new_viewing_path(tmdb_id: show['id'].to_i,
+                                                                    original_name: show['original_name'], original_language: show['original_language'],
+                                                                    name: show['name'], poster_path: show['poster_path'], overview: show['overview']),
+                              class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800" %>
+                <% end %>
+            </div>
+          <% end %>
+      <% end %>
+      </div>
+
+  <% else %>
+    <h2 class="font-bold text-2xl text-red-500">We had trouble pulling information about this show from TMDB. Try again later!</h2>
+  <% end %>
+
+</div>

@@ -43,10 +43,14 @@
           <% @credits['cast'].each do |credit| %>
             <div class="m-2">
               <%= image_tag("https://image.tmdb.org/t/p/w300/#{credit['profile_path']}", class: "object-contain h-80 w-100") %>
-              <ul>
+              <ul class="mb-2">
                 <li>Actor/Actress: <%= credit['name'] %></li>
                 <li>Character name: <%= credit['character'] %></li>
               </ul>
+              <%= link_to "View Person Info",
+                          home_people_path(tmdb_id: credit['id']),
+                          class: "text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
+        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800" %>
             </div>
           <% end %>
         <% end %>

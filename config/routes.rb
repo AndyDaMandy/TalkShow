@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'home/tmdb'
   get 'home/show'
   get 'home/season'
+  get 'home/people'
   resources :friendships
   get 'friends/create/:id', to: 'friendships#create', as: 'add_friend'
   resources :reviews
