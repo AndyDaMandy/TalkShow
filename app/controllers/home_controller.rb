@@ -13,7 +13,7 @@ class HomeController < ApplicationController
 
     #  search = params[:search]
     # hash = TmdbService.new
-    @data = hash.get_show_by_title(params[:search])
+    @data = hash.multi_search(params[:search])
     # if response body 1== @data = "thi doesn't work"
 
   end

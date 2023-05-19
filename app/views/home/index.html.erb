@@ -1,6 +1,6 @@
 <h1 class="block text-2xl font-bold text-pink-500">Shows</h1>
 <div class="block">
-  <p>Enter text below to find shows. Show data credit: TMDB.org</p>
+  <p>Enter text below to find shows or people. Show/people data credit: TMDB.org</p>
 </div>
 <div class="block mb-5">
   <%= form_with url: home_index_url, method: :get do |form| %>
@@ -15,11 +15,12 @@
   <h1 class="block font-2xl text-pink-500 font-bold">Search Results</h1>
   <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
     <% @data.each do |data| %>
+      <% if data['media_type'] == 'tv' %>
       <div class="m-2">
         <%= image_tag("https://image.tmdb.org/t/p/w500/#{data['poster_path']}", class: "object-contain h-80 w-120")%>
         <ul id=<%= data['id'] %>>
           <li>Name: <%= data['name']%> </li>
-          <li> Original Language: <%= data['original_language'] %> </li>
+          <li>Original Language: <%= data['original_language'] %> </li>
           <li>Original Name: <%= data['original_name']%> </li>
          <!-- <li>Overview: <%# data['overview']%></li> -->
           <li> First Air Date: <%= data['first_air_date'] %></li>
@@ -35,35 +36,46 @@
                         text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800" %>
           <% end %>
       </div>
+      <% elsif data['media_type'] == 'person' %>
+        <div class="m-2">
+          <%= image_tag("https://image.tmdb.org/t/p/w500/#{data['profile_path']}", class: "object-contain h-80 w-120")%>
+          <ul id=<%= data['id'] %>>
+            <li>Name: <%= data['name']%> </li>
+          </ul>
+          <%#link_to "More Info", home_person_path(tmdb_id: data['id'].to_i),
+                    class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800" %>
+        </div>
+      <% end %>
     <% end %>
   </div>
-<% elsif params[:search] && @recent_shows == nil%>
-  <h1 class="text-red-500 font-bold text-2xl">Failed to connect to TMDB, thus the search didn't work. Try again later</h1>
+<% elsif params[:search] && @data == nil%>
+  <h1 class="text-red-500 font-bold text-2xl">Your search returned 0 results! Try something else or try again later!</h1>
 <% else %>
-<% if @recent_shows != nil %>
-  <h1 class="block font-2xl text-pink-500 font-bold">Trending Shows</h1>
-  <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
-    <% @recent_shows['results'].each do |data| %>
-      <div class="m-2">
-        <%= image_tag("https://image.tmdb.org/t/p/w500/#{data['poster_path']}", class: "object-contain h-80 w-120")%>
-        <ul id=<%= data['id'] %>>
-          <li>Name: <%= data['name']%> </li>
-          <li>Original Language: <%= data['original_language'] %> </li>
-          <li>Original Name: <%= data['original_name']%> </li>
-          <!--<li>Overview: <%# data['overview']%></li> -->
-          <li> First Air Date: <%= data['first_air_date'] %></li>
-        </ul>
-        <%= link_to "More Info", home_show_path(tmdb_id: data['id'].to_i),
-                    class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
-                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800" %>
-        <%= link_to "Add to Watch List", new_viewing_path(tmdb_id: data['id'].to_i,
-                                                    original_name: data['original_name'], original_language: data['original_language'],
-                                                    name: data['name'], poster_path: data['poster_path'], overview: data['overview']),
-                    class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
-                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800" %>
-      </div>
-      <% end %>
-  </div>
+  <% if @recent_shows != nil %>
+    <h1 class="block font-2xl text-pink-500 font-bold">Trending Shows</h1>
+    <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+      <% @recent_shows['results'].each do |data| %>
+        <div class="m-2">
+          <%= image_tag("https://image.tmdb.org/t/p/w500/#{data['poster_path']}", class: "object-contain h-80 w-120")%>
+          <ul id=<%= data['id'] %>>
+            <li>Name: <%= data['name']%> </li>
+            <li>Original Language: <%= data['original_language'] %> </li>
+            <li>Original Name: <%= data['original_name']%> </li>
+            <!--<li>Overview: <%# data['overview']%></li> -->
+            <li> First Air Date: <%= data['first_air_date'] %></li>
+          </ul>
+          <%= link_to "More Info", home_show_path(tmdb_id: data['id'].to_i),
+                      class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
+                          text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800" %>
+          <%= link_to "Add to Watch List", new_viewing_path(tmdb_id: data['id'].to_i,
+                                                      original_name: data['original_name'], original_language: data['original_language'],
+                                                      name: data['name'], poster_path: data['poster_path'], overview: data['overview']),
+                      class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
+                          text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800" %>
+        </div>
+        <% end %>
+    </div>
   <% else %>
     <h1 class="text-red-500 font-bold text-2xl">Failed to connect to TMDB. Try again later</h1>
   <% end %>
