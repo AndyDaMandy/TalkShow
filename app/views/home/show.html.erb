@@ -7,7 +7,7 @@
         <li>Original Language: <%= @data['original_language'] %> </li>
         <li>Original Name: <%= @data['original_name'] %> </li>
         <li>Overview: <%= @data['overview'] %></li>
-        <li>Episode Run Time: <%= @data['episode_run_time'] %> - minutes </li>
+      <!--  <li>Episode Run Time: <%# @data['episode_run_time'].each {|info| "#{info} "} %> - minutes </li> -->
         <li>Number of Seasons: <%= @data['number_of_seasons'] %></li>
         <li>Currently Airing: <%= @data['in_production'] == true ? "Airing" : "Not Airing" %></li>
         <% @data['genres'].each do |genre| %>

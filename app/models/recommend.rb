@@ -5,4 +5,5 @@ class Recommend < ApplicationRecord
   belongs_to :user
   belongs_to :show
   belongs_to :friendship
+  has_many :chats, dependent: :destroy
 end

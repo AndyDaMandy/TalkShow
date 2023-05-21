@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :viewings, dependent: :destroy
   has_many :recommends, dependent: :destroy
+  has_many :chats, dependent: :destroy
 
   enum role: %i[user moderator admin]
   after_initialize :set_default_role, if: :new_record?
