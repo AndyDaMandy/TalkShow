@@ -11,30 +11,31 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :rating, "0-5 Stars" ,style: "display: block" %>
-    <%= form.number_field :rating, in: 0..5 %>
+    <div>
+      <%= form.label :rating, "0-5 Stars" ,style: "display: block" %>
+      <%= form.number_field :rating, in: 0..5 %>
+    </div>
+    <div>
+      <%= form.label :recommend, "Would you recommend this show to people?" %>
+    <div>
+      <%= form.label :recommend, "No Judgement", style: "display: block" %>
+      <%= form.radio_button :recommend, 'no_judgement' %>
+    </div>
+    <div>
+      <%= form.label :recommend, "No", style: "display: block" %>
+      <%= form.radio_button :recommend, 'no' %>
+    </div>
+    <div>
+      <%= form.label :recommend, "Maybe", style: "display: block" %>
+      <%= form.radio_button :recommend, 'maybe' %>
+    </div>
+    <div>
+      <%= form.label :recommend, "Yes", style: "display: block" %>
+      <%= form.radio_button :recommend, 'yes' %>
+    </div>
   </div>
-
   <div>
-    <%= form.label :recommend, "No Judgement", style: "display: block" %>
-    <%= form.radio_button :recommend, 'no_judgement' %>
-  </div>
-  <div>
-    <%= form.label :recommend, "No", style: "display: block" %>
-    <%= form.radio_button :recommend, 'no' %>
-  </div>
-  <div>
-    <%= form.label :recommend, "Maybe", style: "display: block" %>
-    <%= form.radio_button :recommend, 'maybe' %>
-  </div>
-  <div>
-    <%= form.label :recommend, "Yes", style: "display: block" %>
-    <%= form.radio_button :recommend, 'yes' %>
-  </div>
-
-  <div>
-    <%= form.label :content, style: "display: block" %>
+    <%= form.label :content, "Review:", style: "display: block" %>
     <%= form.text_area :content %>
   </div>
   <div>
