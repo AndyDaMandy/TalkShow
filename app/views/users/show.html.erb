@@ -54,13 +54,12 @@
         <% end %>
       </p>
         <%# data %>
-      <%= link_to show_path(@show) do  %>
+      <%= link_to home_show_path(tmdb_id: @show.tmdb_id) do  %>
         <%= image_tag("https://image.tmdb.org/t/p/w500/#{@show.poster_path}", class: "object-contain h-80 w-120")%>
       <% end %>
       <li>Name: <%= @show.name %> </li>
       <li>Original Language: <%= @show.original_language %> </li>
       <li>Original Name: <%= @show.original_name %> </li>
-      <li>Overview: <%# @show.overview %></li>
     </ul>
     </div>
   <% end %>
