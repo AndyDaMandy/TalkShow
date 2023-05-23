@@ -1,7 +1,6 @@
 <div>
 <div class="mb-5">
   <ul>
-    <li><%# season %></li>
     <%= image_tag("https://image.tmdb.org/t/p/w500#{@data['poster_path']}", class: "object-contain h-80 w-120")%>
     <li>Season Number: <%= @data['season_number'] %></li>
     <li>Episode Count: <%= @data['episode_count']%></li>
@@ -22,7 +21,6 @@
         </ul>
         <hr>
       </div>
-
     <% end %>
   <% else %>
   </div>

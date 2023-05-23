@@ -23,7 +23,7 @@ class SeasonViewingsController < ApplicationController
                                         episode_count: params[:episode_count], season_number: params[:season_number].to_i,
                                         air_date: params[:air_date],
                                         name: params[:name], poster_path: params[:poster_path],
-                                        overview: params[:overview])
+                                        overview: params[:overview], show_id: params[:show_id])
   end
 
   # GET /season_viewings/1/edit
