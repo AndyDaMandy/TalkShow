@@ -1,4 +1,4 @@
-<%= form_with(model: chat) do |form| %>
+<%= form_with(model: chat, local: true) do |form| %>
   <% if chat.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(chat.errors.count, "error") %> prohibited this chat from being saved:</h2>
@@ -11,20 +11,12 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :recommend_id, style: "display: block" %>
-    <%= form.text_field :recommend_id %>
-  </div>
+    <%= form.recommend_id :recommend_id %>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
+    <%= form.hidden_field :user_id %>
 
-  <div>
-    <%= form.label :friend_id, style: "display: block" %>
-    <%= form.number_field :friend_id %>
-  </div>
+    <%= form.hidden_field:friend_id %>
+
 
   <div>
     <%= form.label :message, style: "display: block" %>

@@ -26,4 +26,9 @@
     <%= recommend.show.overview %>
   </p>
 
+  <% if action_name == 'show' %>
+    <h2>Chat</h2>
+  <p>Chat here:"</p>
+    <%= render 'chats/form', locals: { chat: @recommend.chats.build } %>
+  <% end %>
 </div>
