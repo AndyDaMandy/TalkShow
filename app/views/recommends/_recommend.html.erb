@@ -27,8 +27,11 @@
   </p>
 
   <% if action_name == 'show' %>
-    <h2>Chat</h2>
-  <p>Chat here:"</p>
-    <%= render 'chats/form', locals: { chat: @recommend.chats.build } %>
+    <h2>Chats</h2>
+    <div>
+      <%= render @recommend.chats %>
+    </div>
+  <p>Chat here:</p>
+    <%= render partial: 'chats/form', locals: { chat: @recommend.chats.build } %>
   <% end %>
 </div>
