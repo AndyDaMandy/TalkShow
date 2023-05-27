@@ -26,10 +26,10 @@ class ChatsController < ApplicationController
 
     respond_to do |format|
       if @chat.save
-        format.html { redirect_to chat_url(@chat), notice: "Chat was successfully created." }
+        format.html { redirect_to recommend_url(@chat.recommend), notice: "Message was successfully created." }
         format.json { render :show, status: :created, location: @chat }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to recommend_url(@chat.recommend), status: :unprocessable_entity }
         format.json { render json: @chat.errors, status: :unprocessable_entity }
       end
     end
