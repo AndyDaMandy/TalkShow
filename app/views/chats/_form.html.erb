@@ -19,11 +19,12 @@
 
 
   <div>
-    <%= form.label :message, style: "display: block" %>
-    <%= form.text_area :message %>
+    <%= form.label :message, "Message:", class: "block" %>
+    <%= form.text_area :message, class: "block outline my-2" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Submit Message", class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800 mr-4" %>
   </div>
 <% end %>

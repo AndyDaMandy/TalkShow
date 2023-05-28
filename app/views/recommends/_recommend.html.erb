@@ -21,17 +21,16 @@
     <%= recommend.show.name %>
   </p>
 
-  <p>
-    <strong>Overview:</strong>
-    <%= recommend.show.overview %>
-  </p>
-
   <% if action_name == 'show' %>
-    <h2>Chats</h2>
+    <p class="mb-3">
+      <strong>Overview:</strong>
+      <%= recommend.show.overview %>
+    </p>
+
+    <h2 class="text-2xl block text-pink-500">Chat Messages</h2>
     <div>
       <%= render @recommend.chats %>
     </div>
-  <p>Chat here:</p>
     <%= render partial: 'chats/form', locals: { chat: @recommend.chats.build } %>
   <% end %>
 </div>

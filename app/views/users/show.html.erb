@@ -32,8 +32,14 @@
       <li><%= user.last_name %></li>
     <%  end %>
   </ul>
-
-
+  <h2 class="block mb-2 text-pink-500 font-bold text-2xl">Recommended to me</h2>
+  <ul>
+    <% @user.inverse_recommends.each do |recommend| %>
+      <%= link_to recommend do %>
+      <li><%= recommend.show.name %> - Recommended by: <%= recommend.user.first_name %> <%= recommend.user.last_name %></li>
+      <% end %>
+    <% end %>
+  </ul>
 <% end %>
 <h2 class="block mb-2 text-pink-500 font-bold text-2xl">Watch List</h2>
 <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">

@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :viewings, dependent: :destroy
   has_many :recommends, dependent: :destroy
+  has_many :inverse_recommends, class_name: 'Recommend', foreign_key: 'friend_id'
   has_many :chats, dependent: :destroy
 
   enum role: %i[user moderator admin]

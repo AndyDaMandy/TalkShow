@@ -3,10 +3,11 @@
 # users
 class RecommendsController < ApplicationController
   before_action :set_recommend, only: %i[show edit update destroy]
+  before_action :authenticate_user!
 
   # GET /recommends or /recommends.json
   def index
-    @recommends = Recommend.all
+    @recommends = current_user.recommends
   end
 
   # GET /recommends/1 or /recommends/1.json
