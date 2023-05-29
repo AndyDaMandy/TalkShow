@@ -18,6 +18,9 @@ class RecommendsController < ApplicationController
   def new
     @recommend = Recommend.new
     @friends = current_user.friends
+    # @friends = current_user.friends.where(inverse_friends == current_user)
+    # @inverse_friendships = current_user.inverse_friendships
+    # @confirmed_Friends
     @friendships = current_user.friendships
     @show = Show.where(tmdb_id: params[:tmdb_id]).first!
   end
