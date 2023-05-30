@@ -11,7 +11,7 @@
   </head>
   <body>
     <!-- navbar -->
-    <%= render 'layouts/navbar' %>
+    <%= render 'layouts/navbar2' %>
     <!-- alerts -->
     <%= render 'layouts/alerts' %>
     <!-- content -->
@@ -20,5 +20,13 @@
       <%= yield %>
       </div>
     </div>
+    <script>
+      // This is for using the tailwind-hamburgers plugin
+        const tham = document.querySelector(".tham");
+
+        tham.addEventListener('click', () => {
+            tham.classList.toggle('tham-active');
+        });
+    </script>
   </body>
 </html>
