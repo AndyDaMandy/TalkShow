@@ -19,19 +19,22 @@
       <div class="w-full">
       <%= yield %>
       </div>
+      <%# render 'layouts/bottomnav' %>
     </div>
     <script>
       // This is for using the tailwind-hamburgers plugin
-        const tham = document.querySelector(".tham");
-        const navbar = document.getElementById("navbar");
-        const navbar2 = document.getElementById("navbar2");
+      if (typeof tham === 'undefined') {
+          const tham = document.querySelector(".tham");
+          const navbar = document.getElementById("navbar");
+          const navbar2 = document.getElementById("navbar2");
 
-        tham.addEventListener('click', () => {
-            tham.classList.toggle('tham-active');
-            navbar.classList.toggle('hidden');
-            navbar2.classList.toggle('hidden');
+          tham.addEventListener('click', () => {
+              tham.classList.toggle('tham-active');
+              navbar.classList.toggle('hidden');
+              navbar2.classList.toggle('hidden');
 
-        });
+          });
+      }
     </script>
   </body>
 </html>
