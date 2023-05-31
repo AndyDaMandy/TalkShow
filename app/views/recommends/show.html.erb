@@ -1,8 +1,12 @@
-<%= render @recommend %>
+<% if user_signed_in? && current_user == @recommend.user || current_user.id == @recommend.friend_id %>
 
+<%= render @recommend %>
+<% else %>
+  <h1 class="block font-bold text-2xl text-red-500">Access Denied</h1>
+<% end %>
 <%# link_to "Back to recommends", recommends_path, class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
                         text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800 mr-4"  %>
-<% if user_signed_in? && @recommend.user = current_user %>
+<% if user_signed_in? && @recommend.user == current_user %>
 <div>
   <%# link_to "Edit this recommend", edit_recommend_path(@recommend), class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
                         text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800 mr-4"  %>

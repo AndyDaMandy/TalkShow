@@ -1,5 +1,10 @@
 <div id="<%= dom_id recommend %>">
-
+  <p>
+    <strong>
+    Recommender:
+    </strong>
+    <%= recommend.user.first_name %> <%= recommend.user.last_name %>
+  </p>
   <p>
     <strong>Friend:</strong>
     <%= recommend.friendship.friend.first_name %> <%= recommend.friendship.friend.last_name %>
