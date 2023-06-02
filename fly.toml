@@ -1,43 +1,18 @@
-# fly.toml app configuration file generated for winter-grass-5043 on 2023-05-15T13:07:38-04:00
+# fly.toml app configuration file generated for icy-wood-1931 on 2023-06-02T11:19:34-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "winter-grass-5043"
+app = "icy-wood-1931"
 primary_region = "ewr"
-kill_signal = "SIGINT"
-kill_timeout = "5s"
+console_command = "/rails/bin/rails console"
 
-[experimental]
-  auto_rollback = true
-
-[env]
-  PRIMARY_REGION = "ewr"
-
-[[services]]
-  protocol = "tcp"
+[http_service]
   internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
   min_machines_running = 0
-  processes = ["app"]
-
-  [[services.ports]]
-    port = 80
-    handlers = ["http"]
-    force_https = true
-
-  [[services.ports]]
-    port = 443
-    handlers = ["tls", "http"]
-  [services.concurrency]
-    type = "connections"
-    hard_limit = 25
-    soft_limit = 20
-
-  [[services.tcp_checks]]
-    interval = "15s"
-    timeout = "2s"
-    grace_period = "1s"
-    restart_limit = 0
 
 [[statics]]
   guest_path = "/rails/public"
