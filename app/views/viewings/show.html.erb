@@ -6,8 +6,10 @@
 
 <% if user_signed_in? && @viewing.user == current_user %>
 <div>
-  <%= link_to "Edit this show from watch list", edit_viewing_path(@viewing) %> |
+  <%= link_to "Edit Status", edit_viewing_path(@viewing), class: "text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800" %>
   <%# button_to "Remove from Watch-List", @viewing, method: :delete %>
-  <%= button_to "Remove from Watch-List", @viewing, data: {turbo_method: :delete, turbo_confirm: "This will delete any reviews/seasons you have for the show. Are you sure?"} %>
+  <%= button_to "Remove from List", @viewing, data: {turbo_method: :delete, turbo_confirm: "This will delete any reviews/seasons you have for the show. Are you sure?"}, class: "text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800" %>
 </div>
 <% end %>

@@ -18,6 +18,12 @@ class RecommendsController < ApplicationController
   def new
     @recommend = Recommend.new
     @friends = current_user.friends
+    @friends.each do |friend|
+      if !friend.friends.include? current_user
+        @friends.delete(friend)
+      end
+    end
+
     # @friends = current_user.friends.where(inverse_friends == current_user)
     # @inverse_friendships = current_user.inverse_friendships
     # @confirmed_Friends

@@ -16,7 +16,7 @@
   <div>
     <%= form.label :friend_id, "Friends List:", style: "display: block" %>
     <%# form.hidden_field :friend_id %>
-    <%= form.collection_select :friend_id, current_user.friends.order(:last_name), :id, :last_name %>
+    <%= form.collection_select :friend_id, current_user.friends.order(:last_name), :id, :last_name, prompt: true %>
   </div>
   <%= form.hidden_field :show_id, value: @show.id %>
 

@@ -7,6 +7,7 @@
     <li>Words to Live by: <%= @user.words_to_live_by %></li>
     <li>Location: <%= @user.location %></li>
     <% if user_signed_in? && @user != current_user %>
+      <p><em>Note, the other user must add you as a friend to complete the friendship</em></p>
       <li><%= button_to "Add Friend", friendships_path(friend_id: @user), :method => :post, class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
                         text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800 mr-4" %></li>
     <% end %>
