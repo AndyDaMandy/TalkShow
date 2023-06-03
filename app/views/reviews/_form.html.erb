@@ -12,11 +12,12 @@
   <% end %>
 
     <div>
-      <%= form.label :rating, "0-5 Stars" ,style: "display: block" %>
-      <%= form.number_field :rating, in: 0..5 %>
+      <%= form.label :rating, "Rating: 0-5 Stars" ,style: "display: block" %>
+      <%= form.number_field :rating, in: 0..5, class: "mb-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
+      dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
     </div>
-    <div>
-      <%= form.label :recommend, "Would you recommend this show to people?" %>
+    <div class="mb-3">
+      <%= form.label :recommend, "Would you recommend this show to people?", class: "font-bold" %>
     <div>
       <%= form.label :recommend, "No Judgement", style: "display: block" %>
       <%= form.radio_button :recommend, 'no_judgement' %>

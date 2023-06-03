@@ -1,8 +1,10 @@
 <%= render @season_viewing %>
 
 <div>
-  <%= link_to "Edit this season viewing", edit_season_viewing_path(@season_viewing) %> |
-  <%= link_to "Back to season viewings", season_viewings_path %>
+  <%= link_to "Edit this", edit_season_viewing_path(@season_viewing), class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800"  %>
+  <%# link_to "Back to season viewings", season_viewings_path %>
 
-  <%= button_to "Destroy this season viewing", @season_viewing, method: :delete %>
+  <%= button_to "Destroy this", @season_viewing, method: :delete, class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800"  %>
 </div>

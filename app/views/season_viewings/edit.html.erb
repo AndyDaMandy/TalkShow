@@ -1,10 +1,11 @@
-<h1>Editing season viewing</h1>
+<h1 class="text-2xl block mb-3 text-pink-500">Editing season viewing</h1>
 
 <%= render "form", season_viewing: @season_viewing %>
 
 <br>
 
 <div>
-  <%= link_to "Show this season viewing", @season_viewing %> |
-  <%= link_to "Back to season viewings", season_viewings_path %>
+  <%= link_to "Show this", @season_viewing, class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800"  %>
+  <%# link_to "Back to season viewings", season_viewings_path %>
 </div>
