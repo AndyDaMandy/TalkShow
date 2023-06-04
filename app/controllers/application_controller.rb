@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
     #t.string "location"
     #should I add about?
     def configure_permitted_parameters
-        devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :first_name, :last_name, :worst_to_live_by, :age, :location])
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :first_name, :last_name, :worst_to_live_by, :age, :location, :avatar])
     end
 end

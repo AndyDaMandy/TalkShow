@@ -24,6 +24,8 @@ class User < ApplicationRecord
   has_many :inverse_recommends, class_name: 'Recommend', foreign_key: 'friend_id'
   has_many :chats, dependent: :destroy
 
+  has_one_attached :avatar
+
   enum role: %i[user moderator admin]
   after_initialize :set_default_role, if: :new_record?
   def set_default_role
