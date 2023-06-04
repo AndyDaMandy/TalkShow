@@ -19,11 +19,11 @@
       <div class="m-2">
         <%= image_tag("https://image.tmdb.org/t/p/w500/#{data['poster_path']}", class: "object-contain h-80 w-120")%>
         <ul id=<%= data['id'] %>>
-          <li>Name: <%= data['name']%> </li>
-          <li>Original Language: <%= data['original_language'] %> </li>
-          <li>Original Name: <%= data['original_name']%> </li>
+          <li><strong>Name:</strong> <%= data['name']%> </li>
+          <li><strong>Original Language:</strong> <%= data['original_language'] %> </li>
+          <li><strong>Original Name:</strong> <%= data['original_name']%> </li>
          <!-- <li>Overview: <%# data['overview']%></li> -->
-          <li> First Air Date: <%= data['first_air_date'] %></li>
+          <li><strong>First Air Date:</strong> <%= data['first_air_date'] %></li>
         </ul>
         <%= link_to "More Info", home_show_path(tmdb_id: data['id'].to_i),
                     class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
@@ -62,11 +62,11 @@
         <div class="m-2">
           <%= image_tag("https://image.tmdb.org/t/p/w500/#{data['poster_path']}", class: "object-contain h-80 w-120")%>
           <ul id=<%= data['id'] %>>
-            <li>Name: <%= data['name']%> </li>
-            <li>Original Language: <%= data['original_language'] %> </li>
-            <li>Original Name: <%= data['original_name']%> </li>
+            <li><strong>Name:</strong> <%= data['name']%> </li>
+            <li><strong>Original Language:</strong> <%= data['original_language'] %> </li>
+            <li><strong>Original Name:</strong> <%= data['original_name']%> </li>
             <!--<li>Overview: <%# data['overview']%></li> -->
-            <li> First Air Date: <%= data['first_air_date'] %></li>
+            <li><strong>First Air Date:</strong> <%= data['first_air_date'] %></li>
           </ul>
           <%= link_to "More Info", home_show_path(tmdb_id: data['id'].to_i),
                       class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg

@@ -9,7 +9,7 @@
     <strong>Friend:</strong>
     <%= recommend.friendship.friend.first_name %> <%= recommend.friendship.friend.last_name %>
   </p>
-  <%= link_to show_path(recommend.show) do %>
+  <%= link_to home_show_path(tmdb_id: recommend.show.tmdb_id) do %>
   <%= image_tag("https://image.tmdb.org/t/p/w500/#{recommend.show.poster_path}", class: "object-contain h-80 w-120")%>
   <% end %>
   <p>

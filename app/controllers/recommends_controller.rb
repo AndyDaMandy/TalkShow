@@ -7,7 +7,7 @@ class RecommendsController < ApplicationController
 
   # GET /recommends or /recommends.json
   def index
-    @recommends = current_user.recommends
+    @recommends = Recommend.where(friend_id: current_user.id) + current_user.recommends
   end
 
   # GET /recommends/1 or /recommends/1.json

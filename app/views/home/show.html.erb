@@ -3,15 +3,15 @@
     <div>
         <%= image_tag("https://image.tmdb.org/t/p/w500/#{@data['poster_path']}", class: "object-contain h-80 w-120")%>
       <ul>
-        <li>Name: <%= @data['name'] %> </li>
-        <li>Original Language: <%= @data['original_language'] %> </li>
-        <li>Original Name: <%= @data['original_name'] %> </li>
-        <li>Overview: <%= @data['overview'] %></li>
+        <li><strong>Name:</strong> <%= @data['name'] %> </li>
+        <li><strong>Original Language:</strong> <%= @data['original_language'] %> </li>
+        <li><strong>Original Name:</strong> <%= @data['original_name'] %> </li>
+        <li><strong>Overview:</strong> <%= @data['overview'] %></li>
       <!--  <li>Episode Run Time: <%# @data['episode_run_time'].each {|info| "#{info} "} %> - minutes </li> -->
-        <li>Number of Seasons: <%= @data['number_of_seasons'] %></li>
-        <li>Currently Airing: <%= @data['in_production'] == true ? "Airing" : "Not Airing" %></li>
+        <li><strong>Number of Seasons:</strong> <%= @data['number_of_seasons'] %></li>
+        <li><strong>Currently Airing:</strong> <%= @data['in_production'] == true ? "Airing" : "Not Airing" %></li>
         <% @data['genres'].each do |genre| %>
-          <li>Genre: <%= genre['name'] %></li>
+          <li><strong>Genre:</strong> <%= genre['name'] %></li>
         <% end %>
       </ul>
       <% if user_signed_in?  && current_user.viewings.where(tmdb_id: @data['id']) == [] %>
@@ -25,8 +25,7 @@
       <p>This show is already on your list! </p>
         <% end %>
       <% if @providers != nil %>
-        <p>Streaming services you can watch via:</p>
-        <p>This data is provided by JustWatch via Tmdb</p>
+        <p><strong>Streaming Services</strong> This data is provided by JustWatch via Tmdb</p>
         <div class="grid gap-1 grid-flow-row grid-cols-3">
          <% if  @providers['results']['US'] != nil %>
           <% @providers['results']['US']['flatrate'].each do |provider| %>
@@ -46,8 +45,8 @@
             <div class="m-2">
               <%= image_tag("https://image.tmdb.org/t/p/w300/#{credit['profile_path']}", class: "object-contain h-80 w-100") %>
               <ul class="mb-2">
-                <li>Actor/Actress: <%= credit['name'] %></li>
-                <li>Character name: <%= credit['character'] %></li>
+                <li><strong>Actor/Actress:</strong> <%= credit['name'] %></li>
+                <li><strong>Character name:</strong> <%= credit['character'] %></li>
               </ul>
               <%= link_to "View Person Info",
                           home_people_path(tmdb_id: credit['id']),
@@ -58,7 +57,7 @@
         <% end %>
       <% end %>
       </div>
-      <h3 class="mb-3 text-2xl font-bold">Seasons</h3>
+      <h3 class="mt-6 mb-3 text-2xl font-bold text-pink-500">Seasons</h3>
       <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
         <% @data['seasons'].reverse.each do |season| %>
           <% if season['season_number'] != 0 %>
@@ -66,10 +65,10 @@
               <ul>
                 <li><%# season %></li>
                 <%= image_tag("https://image.tmdb.org/t/p/w500/#{season['poster_path']}", class: "object-contain h-80 w-120")%>
-                <li>Season Number: <%= season['season_number'] %></li>
-                <li>Episode Count: <%= season['episode_count'] %></li>
-                <li>Air Date: <%= season['air_date'] %></li>
-                <li>Overview: <%= raw season['overview'] %></li>
+                <li><strong>Season Number:</strong> <%= season['season_number'] %></li>
+                <li><strong>Episode Count:</strong> <%= season['episode_count'] %></li>
+                <li><strong>Air Date:</strong> <%= season['air_date'] %></li>
+                <li><strong>Overview:</strong> <%= raw season['overview'] %></li>
               </ul>
               <div class="my-4">
                 <%= link_to "View Season Info",
