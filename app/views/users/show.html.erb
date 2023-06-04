@@ -29,8 +29,7 @@
   <h2 class="block mb-2 text-pink-500 font-bold text-2xl">Friended by Watcher</h2>
   <ul>
     <% @user.inverse_friends.each do |user| %>
-    <li><%= user.first_name  %></li>
-      <li><%= user.last_name %></li>
+    <li><%= user.first_name  %> <%= user.last_name %></li>
     <%  end %>
   </ul>
   <h2 class="block mb-2 text-pink-500 font-bold text-2xl">Recommended to me</h2>
@@ -64,9 +63,9 @@
       <%= link_to home_show_path(tmdb_id: @show.tmdb_id) do  %>
         <%= image_tag("https://image.tmdb.org/t/p/w500/#{@show.poster_path}", class: "object-contain h-80 w-120")%>
       <% end %>
-      <li>Name: <%= @show.name %> </li>
-      <li>Original Language: <%= @show.original_language %> </li>
-      <li>Original Name: <%= @show.original_name %> </li>
+      <li><strong>Name:</strong> <%= @show.name %> </li>
+      <li><strong>Original Language:</strong> <%= @show.original_language %> </li>
+      <li><strong>Original Name:</strong> <%= @show.original_name %> </li>
     </ul>
     </div>
   <% end %>
