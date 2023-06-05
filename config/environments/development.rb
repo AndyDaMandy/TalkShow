@@ -21,6 +21,8 @@ Rails.application.configure do
   #devise mailers
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  #active storage
+  config.active_storage.service = :local
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
