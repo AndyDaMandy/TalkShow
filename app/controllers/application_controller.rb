@@ -17,5 +17,6 @@ class ApplicationController < ActionController::Base
     #should I add about?
     def configure_permitted_parameters
         devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :first_name, :last_name, :worst_to_live_by, :age, :location, :avatar])
+        devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:avatar, :email, :password, :current_password)}
     end
 end

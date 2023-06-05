@@ -44,6 +44,10 @@
     <%= f.label :location, class: "uppercase text-gray-700 text-xs font-bold" %><br />
     <%= f.text_field :location, class: "shadow appearance-none border rounded px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
   </div>
+  <div class="mb-3">
+    <%= f.label :avatar, class: "uppercase text-gray-700 text-xs font-bold" %><br />
+    <%= f.file_field :avatar %>
+  </div>
 
   <div class="actions">
     <%= f.submit "Sign up", class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
