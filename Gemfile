@@ -30,6 +30,12 @@ gem "cssbundling-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# aws
+gem "aws-sdk-s3", require: false
+
+#for active storage
+gem "image_processing", ">= 1.2"
+
 gem 'rubocop', require: false
 
 # for testing
@@ -45,7 +51,6 @@ gem 'faraday'
 gem 'figaro'
 
 # for pagination
-
 gem 'kaminari'
 
 # Use Redis adapter to run Action Cable in production

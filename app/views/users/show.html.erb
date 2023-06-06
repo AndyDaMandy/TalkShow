@@ -1,5 +1,10 @@
 <div class="my-3">
   <h2 class="block mb-2 text-pink-500 font-bold text-2xl">Watcher Profile</h2>
+  <% if @user.avatar.present? %>
+    <%= image_tag(@user.avatar.variant(resize_to_fill: [50, 50]), class: "rounded-circle") %>
+  <% else %>
+   <!-- <img alt="image" class="rounded-circle" src="/assets/default_avatar_small.jpg"> -->
+  <% end %>
   <ul>
     <li><strong>First Name:</strong> <%= @user.first_name %></li>
     <li><strong>Last Name:</strong> <%= @user.last_name %></li>

@@ -7,13 +7,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :username, presence: true, length: { minimum: 3, maximum: 35 }
-  validates :first_name, presence: true, length: { minimum: 1, maximum: 40 }
-  validates :last_name, presence: true, length: { minimum: 1, maximum: 40 }
-  validates :age, numericality: { more_than_or_equal_to: 13, less_than_or_equal_to: 100, only_integer: true }
-  validates :words_to_live_by, length: { maximum: 300 }
-  validates :location, length: { maximum: 120 }
-
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
@@ -23,6 +16,17 @@ class User < ApplicationRecord
   has_many :recommends, dependent: :destroy
   has_many :inverse_recommends, class_name: 'Recommend', foreign_key: 'friend_id'
   has_many :chats, dependent: :destroy
+
+  has_one_attached :avatar
+
+  validates :username, presence: true, length: { minimum: 3, maximum: 35 }
+  validates :first_name, presence: true, length: { minimum: 1, maximum: 40 }
+  validates :last_name, presence: true, length: { minimum: 1, maximum: 40 }
+  validates :age, numericality: { more_than_or_equal_to: 13, less_than_or_equal_to: 100, only_integer: true }
+  validates :words_to_live_by, length: { maximum: 300 }
+  validates :location, length: { maximum: 120 }
+  # validates :avatar, file_size: { less_than_or_equal_to: 5.megabytes },
+  # file_content_type: { allow: ['image/jpeg', 'image/png', 'image/gif'] }
 
   enum role: %i[user moderator admin]
   after_initialize :set_default_role, if: :new_record?
