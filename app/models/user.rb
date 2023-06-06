@@ -25,8 +25,8 @@ class User < ApplicationRecord
   validates :age, numericality: { more_than_or_equal_to: 13, less_than_or_equal_to: 100, only_integer: true }
   validates :words_to_live_by, length: { maximum: 300 }
   validates :location, length: { maximum: 120 }
-  validates :avatar, file_size: { less_than_or_equal_to: 5.megabytes },
-            file_content_type: { allow: ['image/jpeg', 'image/png', 'image/gif'] }
+  # validates :avatar, file_size: { less_than_or_equal_to: 5.megabytes },
+  # file_content_type: { allow: ['image/jpeg', 'image/png', 'image/gif'] }
 
   enum role: %i[user moderator admin]
   after_initialize :set_default_role, if: :new_record?
