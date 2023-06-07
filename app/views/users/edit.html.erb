@@ -1,0 +1,36 @@
+<h2>Edit Profile</h2>
+
+<%= form_with model: @user do |f| %>
+  <div class="mb-3">
+    <%= f.label :first_name, class: "block uppercase text-gray-700 text-xs font-bold"%><br />
+    <%= f.text_field :first_name, autocomplete: "first name", class: "shadow appearance-none border rounded  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :last_name, class: "uppercase text-gray-700 text-xs font-bold" %><br />
+    <%= f.text_field :last_name, autocomplete: "last name", class: "shadow appearance-none border rounded px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :words_to_live_by, "Words to live by", class: "uppercase text-gray-700 text-xs font-bold" %><br />
+    <%= f.text_field :words_to_live_by, autocomplete: "Words to live by", class: "shadow appearance-none border rounded px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :age, class: "uppercase text-gray-700 text-xs font-bold" %><br />
+    <%= f.number_field :age, class: "shadow appearance-none border rounded px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", max: 100, min: 13 %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :location, class: "uppercase text-gray-700 text-xs font-bold" %><br />
+    <%= f.text_field :location, class: "shadow appearance-none border rounded px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :avatar, class: "uppercase text-gray-700 text-xs font-bold" %><br />
+    <%= f.file_field :avatar %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update", class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800" %>
+  </div>
+<% end %>
+
+<%= link_to "Back", :back, class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
+                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800" %>
