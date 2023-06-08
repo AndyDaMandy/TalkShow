@@ -3,11 +3,6 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="mb-3">
-    <%= f.label :email, class: "uppercase text-gray-700 text-xs font-bold" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "shadow appearance-none border rounded px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
-  </div>
-
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
@@ -29,34 +24,6 @@
   <div class="mb-3">
     <%= f.label :current_password, class: "uppercase text-gray-700 text-xs font-bold" %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password", class: "shadow appearance-none border rounded px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
-  </div>
-  <div class="mb-3">
-    <%= f.label :username, class: "uppercase text-gray-700 text-xs font-bold" %><br />
-    <%= f.text_field :username, autocomplete: "username", class: "shadow appearance-none border rounded  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
-  </div>
-  <div class="mb-3">
-    <%= f.label :first_name, class: "block uppercase text-gray-700 text-xs font-bold"%><br />
-    <%= f.text_field :first_name, autocomplete: "first name", class: "shadow appearance-none border rounded  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
-  </div>
-  <div class="mb-3">
-    <%= f.label :last_name, class: "uppercase text-gray-700 text-xs font-bold" %><br />
-    <%= f.text_field :last_name, autocomplete: "last name", class: "shadow appearance-none border rounded px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
-  </div>
-  <div class="mb-3">
-    <%= f.label :words_to_live_by, "Words to live by", class: "uppercase text-gray-700 text-xs font-bold" %><br />
-    <%= f.text_field :words_to_live_by, autocomplete: "Words to live by", class: "shadow appearance-none border rounded px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
-  </div>
-  <div class="mb-3">
-    <%= f.label :age, class: "uppercase text-gray-700 text-xs font-bold" %><br />
-    <%= f.number_field :age, class: "shadow appearance-none border rounded px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", max: 100, min: 13 %>
-  </div>
-  <div class="mb-3">
-    <%= f.label :location, class: "uppercase text-gray-700 text-xs font-bold" %><br />
-    <%= f.text_field :location, class: "shadow appearance-none border rounded px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
-  </div>
-  <div class="mb-3">
-    <%= f.label :avatar, class: "uppercase text-gray-700 text-xs font-bold" %><br />
-    <%= f.file_field :avatar %>
   </div>
 
   <div class="actions">
