@@ -9,6 +9,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # TODO check in with Julie what params activity will contain
+    # the idea here will be to include tabs.
+    # if params[:info]
+    # if params[:friends]
+    # if params[:watch_list]
+    # if params[:recommendations]
+    # if params[:setting]
+    # if params[:activity] - this would consist of the feed?
   end
 
   def edit
