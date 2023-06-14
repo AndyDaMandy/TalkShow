@@ -3,7 +3,7 @@
   <% @users.each do |user| %>
   <div class="my-3">
     <%= link_to user_path(user) do %>
-    <p class="text-pink-500 underline hover:text-pink-300"><%= user.first_name %> <% user.last_name %></p>
+    <p class="text-pink-500 underline hover:text-pink-300"><%= user.first_name %> <%= user.last_name %></p>
       <% end %>
   </div>
   <% end %>

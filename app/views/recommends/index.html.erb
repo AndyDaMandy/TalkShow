@@ -2,11 +2,12 @@
 
 <div id="recommends">
   <% @recommends.each do |recommend| %>
-    <%= render recommend %>
-    <p>
-      <%= link_to "Show this recommendation", recommend, class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
-                        text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800" %>
-    </p>
+        <%= render recommend %>
+      <p>
+        <%= link_to "Show this recommendation", recommend, class: "inline-block text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg
+                            text-sm px-5 py-2.5 my-3 dark:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none dark:focus:ring-pink-800" %>
+      </p>
+
   <% end %>
 </div>
 
