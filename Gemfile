@@ -92,3 +92,5 @@ end
 
 
 gem "dockerfile-rails", ">= 1.2", :group => :development
+
+gem "honeybadger", "~> 5.2"
