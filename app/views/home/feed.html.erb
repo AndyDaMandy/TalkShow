@@ -1,0 +1,16 @@
+<div>
+    <% @content.each do |content| %>
+    <ul>
+      <% if content.class == Review %>
+        <li>Review:</li>
+        <li><%= content.rating %></li>
+      <% else %>
+        <li>Added to watch list: </li>
+        <li><%= content.status %></li>
+      <% end %>
+      <li>Watcher: <%= content.user.first_name %> <%= content.user.last_name %></li>
+      <li><%= Show.find_by(tmdb_id: content.tmdb_id).name %></li>
+      <li><%= content.created_at.strftime('%d/%m/%Y') %></li>
+    </ul>
+    <% end %>
+</div>

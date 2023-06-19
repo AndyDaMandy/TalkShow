@@ -31,6 +31,22 @@ class HomeController < ApplicationController
     @data = hash.get_season_by_id(params[:tmdb_id], params[:season_number])
   end
 
+  def feed
+    # TODO: Add in content for users. Pull all users or just friends?
+    # Since it's user based well pull recent actions
+    # Recent actions would be recently added shows or recently liked content?
+    # We'll try a version with just all users for now
+    # @friends = current_user.friends
+    # @viewings = @friends.viewings
+    # @reviews = @friends.reviews
+    # @content = @viewings + @reviews
+    # @users = User.all
+    @reviews = Review.all
+    @viewings = Viewing.all
+    @content = @viewings.to_a + @reviews.to_a
+    @content = @content.sort_by {|obj| obj.created_at }.reverse
+  end
+
   def privacy
   end
 
