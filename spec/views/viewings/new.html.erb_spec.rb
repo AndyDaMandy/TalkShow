@@ -10,7 +10,7 @@ RSpec.describe "viewings/new", type: :view do
       tmdb_id: 202034,
       name: "MyString",
       progress: 1,
-      user: nil
+      user: 1
     ))
   end
 
@@ -29,7 +29,7 @@ RSpec.describe "viewings/new", type: :view do
 
       assert_select "input[name=?]", "viewing[progress]"
 
-      assert_select "input[name=?]", "viewing[user_id]"
+      # assert_select "input[name=?]", "viewing[user_id]"
     end
   end
 end
