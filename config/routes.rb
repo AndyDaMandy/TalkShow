@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'home/show'
   get 'home/season'
   get 'home/people'
+  get 'home/feed'
   resources :friendships
   get 'friends/create/:id', to: 'friendships#create', as: 'add_friend'
   resources :reviews
