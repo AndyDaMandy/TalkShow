@@ -6,10 +6,14 @@ require 'rails_helper'
 # end
 RSpec.describe Viewing, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
-  user = User.create(email: 'tester@gmail.com', password: 'testingthis', password_confirmation: 'testingthis', username: 'Ardvaark',
-                  first_name: 'Jeffy', last_name: 'Tester', words_to_live_by: 'testing', age: 1, location: 'Brooklyn')
+  before(:each) do
+    @user = {id: 1, email: 'tester@gmail.com', password: 'testingthis', password_confirmation: 'testingthis', username: 'Ardvaark',
+             first_name: 'Jeffy', last_name: 'Tester', words_to_live_by: 'testing', age: 1, location: 'Brooklyn' }
+  end
+
   subject do
-    Viewing.new(id: 1, status: "not_started", note: "I love this show", tmdb_id: 124900, progress: 0, user_id: user.id)
+    Viewing.new(id: 1, status: 'not_started', note: 'I love this show', tmdb_id: 124900, progress: 0,
+                user_id: @user[:id], created_at: DateTime.now, updated_at: DateTime.now)
   end
 
   it 'is valid with valid attributes' do
