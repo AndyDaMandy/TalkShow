@@ -4,13 +4,14 @@ require 'rails_helper'
 
 RSpec.describe 'viewings/show', type: :view do
   before(:each) do
+    @user = User.new(email: "test@gmail.com", password: "testingthis", password_confirmation: "testingthis")
     assign(:viewing, Viewing.create!(
       status: 2,
       note: 'MyText',
       tmdb_id: 12323,
       name: 'Name',
       progress: 3,
-      user: 1
+      user: @user.id
     ))
   end
 

@@ -12,66 +12,76 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/chats", type: :request do
+RSpec.describe '/chats', type: :request do
   
   # This should return the minimal set of attributes required to create a valid
   # Chat. As you add validations to Chat, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    #skip("Add a hash of attributes valid for your model")
+    # t.bigint "recommend_id", null: false
+    # t.bigint "user_id", null: false
+    # t.integer "friend_id"
+    # t.text "message"
+    {
+      recommend_id: 1,
+      user_id: 1,
+      friend_id: 2,
+      message: "bacon and potatoes"
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    skip('Add a hash of attributes invalid for your model')
   }
 
-  describe "GET /index" do
-    it "renders a successful response" do
+  describe 'GET /index' do
+    it 'renders a successful response' do
       Chat.create! valid_attributes
       get chats_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
+  describe 'GET /show' do
+    it 'renders a successful response' do
       chat = Chat.create! valid_attributes
       get chat_url(chat)
       expect(response).to be_successful
     end
   end
 
-  describe "GET /new" do
-    it "renders a successful response" do
+  describe 'GET /new' do
+    it 'renders a successful response' do
       get new_chat_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /edit" do
-    it "renders a successful response" do
+  describe 'GET /edit' do
+    it 'renders a successful response' do
       chat = Chat.create! valid_attributes
       get edit_chat_url(chat)
       expect(response).to be_successful
     end
   end
 
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new Chat" do
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'creates a new Chat' do
         expect {
           post chats_url, params: { chat: valid_attributes }
         }.to change(Chat, :count).by(1)
       end
 
-      it "redirects to the created chat" do
+      it 'redirects to the created chat' do
         post chats_url, params: { chat: valid_attributes }
         expect(response).to redirect_to(chat_url(Chat.last))
       end
     end
 
-    context "with invalid parameters" do
-      it "does not create a new Chat" do
+    context 'with invalid parameters' do
+      it 'does not create a new Chat' do
         expect {
           post chats_url, params: { chat: invalid_attributes }
         }.to change(Chat, :count).by(0)
@@ -86,20 +96,20 @@ RSpec.describe "/chats", type: :request do
     end
   end
 
-  describe "PATCH /update" do
-    context "with valid parameters" do
+  describe 'PATCH /update' do
+    context 'with valid parameters' do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        skip('Add a hash of attributes valid for your model')
       }
 
-      it "updates the requested chat" do
+      it 'updates the requested chat' do
         chat = Chat.create! valid_attributes
         patch chat_url(chat), params: { chat: new_attributes }
         chat.reload
-        skip("Add assertions for updated state")
+        skip('Add assertions for updated state')
       end
 
-      it "redirects to the chat" do
+      it 'redirects to the chat' do
         chat = Chat.create! valid_attributes
         patch chat_url(chat), params: { chat: new_attributes }
         chat.reload
@@ -107,7 +117,7 @@ RSpec.describe "/chats", type: :request do
       end
     end
 
-    context "with invalid parameters" do
+    context 'with invalid parameters' do
     
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         chat = Chat.create! valid_attributes
@@ -118,15 +128,15 @@ RSpec.describe "/chats", type: :request do
     end
   end
 
-  describe "DELETE /destroy" do
-    it "destroys the requested chat" do
+  describe 'DELETE /destroy' do
+    it 'destroys the requested chat' do
       chat = Chat.create! valid_attributes
       expect {
         delete chat_url(chat)
       }.to change(Chat, :count).by(-1)
     end
 
-    it "redirects to the chats list" do
+    it 'redirects to the chats list' do
       chat = Chat.create! valid_attributes
       delete chat_url(chat)
       expect(response).to redirect_to(chats_url)

@@ -18,7 +18,10 @@ RSpec.describe "/viewings", type: :request do
   # Viewing. As you add validations to Viewing, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    #skip("Add a hash of attributes valid for your model")
+    {
+
+    }
   }
 
   let(:invalid_attributes) {
