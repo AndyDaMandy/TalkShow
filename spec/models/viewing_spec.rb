@@ -28,6 +28,8 @@ RSpec.describe Viewing, type: :model do
     subject.tmdb_id = nil
     expect(subject).to_not be_valid
   end
+
+  #TODO This pass fails because for some reason progress is nil. Figure out why progress is nil to get this test to pass
   it 'is not valid without progress' do
     subject.progress = nil
     expect(subject).to_not be_valid
