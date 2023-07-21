@@ -6,6 +6,7 @@ require 'rails_helper'
 # end
 RSpec.describe Viewing, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
+  #TODO Look into factorybot - creates models that are backed by the database to use to test against
   before(:each) do
     @user = {id: 1, email: 'tester@gmail.com', password: 'testingthis', password_confirmation: 'testingthis', username: 'Ardvaark',
              first_name: 'Jeffy', last_name: 'Tester', words_to_live_by: 'testing', age: 1, location: 'Brooklyn' }
