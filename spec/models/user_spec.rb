@@ -4,8 +4,9 @@ RSpec.describe User, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
   # TODO Tests are no longer passing with this subject. I added in things such as "role" and that seemed to make things worse
   subject do
-    User.new(email: 'tester4@gmail.com', password: 'testingthis', password_confirmation: 'testingthis', username: 'Ardvaark',
-             first_name: 'Jeffy', last_name: 'Tester', words_to_live_by: 'testing', age: 1, created_at: DateTime.now, updated_at: DateTime.now, location: 'Brooklyn')
+  #   User.new(email: 'tester4@gmail.com', password: 'testingthis', password_confirmation: 'testingthis', username: 'Ardvaark',
+  #            first_name: 'Jeffy', last_name: 'Tester', words_to_live_by: 'testing', age: 1, created_at: DateTime.now, updated_at: DateTime.now, location: 'Brooklyn')
+  # user = create(:user)
   end
 
   it 'is valid with valid attributes' do
