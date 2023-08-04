@@ -13,12 +13,22 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/viewings", type: :request do
+
+  before(:each) do
+    @user = {id: 1, email: 'tester@gmail.com', password: 'testingthis', password_confirmation: 'testingthis', username: 'Ardvaark',
+             first_name: 'Jeffy', last_name: 'Tester', words_to_live_by: 'testing', age: 1, location: 'Brooklyn' }
+    @show = Show.new(id: 1, poster_path: "testingtesting", tmdb_id: 103230)
+  end
   
   # This should return the minimal set of attributes required to create a valid
   # Viewing. As you add validations to Viewing, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    #skip("Add a hash of attributes valid for your model")
+    {
+      id: 1, status: 'not_started', note: 'I love this show', tmdb_id: 124900, progress: 0,
+      user_id: @user[:id], created_at: DateTime.now, updated_at: DateTime.now
+    }
   }
 
   let(:invalid_attributes) {
