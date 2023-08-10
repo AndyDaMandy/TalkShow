@@ -10,5 +10,11 @@ class Viewing < ApplicationRecord
 
   validates :status, presence: true
   validates :tmdb_id, presence: true
+  validates :progress, presence: true
+
+  def status_label
+    # creates a label for the status, so it looks good and removes it from the view
+    #
+  end
 
 end
