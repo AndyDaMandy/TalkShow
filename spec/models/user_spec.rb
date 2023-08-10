@@ -9,41 +9,44 @@ RSpec.describe User, type: :model do
   #   # user = create(:user)
   # end
   # Use FactoryBot to create a user
+  describe 'validations' do
     let(:user) { FactoryBot.create(:user) }
 
-  it 'is valid with valid attributes' do
-    expect(user).to be_valid
-  end
-  it 'is not valid without a username' do
-    user.username = nil
-    expect(user).to_not be_valid
+    it 'is valid with valid attributes' do
+      expect(user).to be_valid
+    end
+    it 'is not valid without a username' do
+      user.username = nil
+      expect(user).to_not be_valid
+    end
+
+    it 'is not valid without a first_name' do
+      user.first_name = nil
+      expect(user).to_not be_valid
+    end
+    it 'is not valid without a last_name' do
+      user.last_name = nil
+      expect(user).to_not be_valid
+    end
+    it 'is not valid if the username is greater than 34 characters' do
+      user.username.length >= 35
+      expect(user).to_not be_valid
+    end
+
+    it 'is not valid if the username is less than 3 characters' do
+      user.username.length <= 2
+      expect(user).to_not be_valid
+    end
+    it 'is not valid if the age is less than 13' do
+      user.age < 13
+      expect(user).to_not be_valid
+    end
+    it 'is not valid if the age is greater than 100' do
+      user.age < 100
+      expect(user).to_not be_valid
+    end
   end
 
-  it 'is not valid without a first_name' do
-    user.first_name = nil
-    expect(user).to_not be_valid
-  end
-  it 'is not valid without a last_name' do
-    user.last_name = nil
-    expect(user).to_not be_valid
-  end
-  it 'is not valid if the username is greater than 34 characters' do
-    user.username.length >= 35
-    expect(user).to_not be_valid
-  end
-
-  it 'is not valid if the username is less than 3 characters' do
-    user.username.length <= 2
-    expect(user).to_not be_valid
-  end
-  it 'is not valid if the age is less than 13' do
-    user.age < 13
-    expect(user).to_not be_valid
-  end
-  it 'is not valid if the age is greater than 100' do
-    user.age < 100
-    expect(user).to_not be_valid
-  end
 
 
 end
