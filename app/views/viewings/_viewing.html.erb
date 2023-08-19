@@ -86,7 +86,7 @@
       </div>
     </div>
 
-  <% else %>
+  <% elsif @show != nil %>
     <div>
         <ul id=<%= viewing.tmdb_id %>>
             <%= image_tag("https://image.tmdb.org/t/p/w500/#{@show.poster_path}", class: "object-contain h-80 w-120")%>
@@ -95,6 +95,10 @@
             <li>Original Name: <%= @show.original_name %> </li>
             <li>Overview: <%= @show.overview %></li>
         </ul>
+    </div>
+  <% else %>
+    <div>
+      <p>An error occured when pulling this show's information</p>
     </div>
   <% end %>
 </div>
