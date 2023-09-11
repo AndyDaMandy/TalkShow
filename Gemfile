@@ -76,6 +76,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 6.0.0'
   gem 'factory_bot_rails'
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do
@@ -94,4 +96,3 @@ gem "dockerfile-rails", ">= 1.2", :group => :development
 
 gem "honeybadger", "~> 5.2"
 
-gem 'rubocop', require: false
