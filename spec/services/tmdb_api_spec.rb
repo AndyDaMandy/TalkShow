@@ -4,11 +4,27 @@ require 'rails_helper'
 
 RSpec.describe 'TMDB API Testing' do
 
+
   describe '#get_recent_shows' do
     it 'it gets recent shows via get_recent_Shows' do
-      hash = TmdbService.new
-      recent_shows = hash.get_recent_shows
-      expect(recent_shows).not_to eq(nil)
+      # stub_request(:get, "https://api.themoviedb.org/3/trending/tv/week?api_key=#{ENV['TMDB_API']}")
+      #   .with(
+      #     headers: {
+      #       'Accept' => '*/*',
+      #       'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+      #       'User-Agent' => 'Faraday v2.7.4'
+      #     }
+      #   )
+      #   .to_return(status: 200, body: '', headers: {})
+
+      VCR.use_cassette('get_recent_shows') do
+        hash = TmdbService.new
+        recent_shows = hash.get_recent_shows
+        expect(recent_shows['results'].first['name']).to eql("ONE PIECE")
+      end
+      # hash = TmdbService.new
+      # recent_shows = hash.get_recent_shows
+      # expect(recent_shows).to_not eql(nil)
     end
     it 'returns a hash' do
       hash = TmdbService.new
