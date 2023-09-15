@@ -1,0 +1,91 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://api.themoviedb.org/3/search/company?api_key=<API_KEY>&query=Netflix",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v2.7.4"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json;charset=utf-8"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Date": [
+            "Fri, 15 Sep 2023 19:04:06 GMT"
+          ],
+          "Server": [
+            "openresty"
+          ],
+          "Cache-Control": [
+            "public, max-age=28099"
+          ],
+          "X-Memc": [
+            "HIT"
+          ],
+          "X-Memc-Key": [
+            "c8fd591aee89ad1a2afe55f60b4f9cf2"
+          ],
+          "X-Memc-Age": [
+            "24331"
+          ],
+          "X-Memc-Expires": [
+            "1438"
+          ],
+          "Etag": [
+            "W/\"ee909d39c976a89f210d06c75fe8a065\""
+          ],
+          "Vary": [
+            "Accept-Encoding",
+            "Origin"
+          ],
+          "X-Cache": [
+            "Miss from cloudfront"
+          ],
+          "Via": [
+            "1.1 a4edf08fb593b7ca4fee9a64018a186e.cloudfront.net (CloudFront)"
+          ],
+          "X-Amz-Cf-Pop": [
+            "JFK52-P1"
+          ],
+          "Alt-Svc": [
+            "h3=\":443\"; ma=86400"
+          ],
+          "X-Amz-Cf-Id": [
+            "r3rYnboQwfVmkEC35bu4wDf9ZxdQ7tkLSkyRvBrLg0wfQ9ClMpvQQg=="
+          ]
+        },
+        "body": {
+          "encoding": "ASCII-8BIT",
+          "string": "{\"page\":1,\"results\":[{\"id\":178464,\"logo_path\":\"/tyHnxjQJLH6h4iDQKhN5iqebWmX.png\",\"name\":\"Netflix\",\"origin_country\":\"US\"},{\"id\":185004,\"logo_path\":\"/tyHnxjQJLH6h4iDQKhN5iqebWmX.png\",\"name\":\"Netflix\",\"origin_country\":\"JP\"},{\"id\":186222,\"logo_path\":\"/tyHnxjQJLH6h4iDQKhN5iqebWmX.png\",\"name\":\"Netflix\",\"origin_country\":\"FR\"},{\"id\":198834,\"logo_path\":\"/tyHnxjQJLH6h4iDQKhN5iqebWmX.png\",\"name\":\"Netflix\",\"origin_country\":\"GB\"},{\"id\":207348,\"logo_path\":\"/tyHnxjQJLH6h4iDQKhN5iqebWmX.png\",\"name\":\"Netflix\",\"origin_country\":\"IN\"},{\"id\":171251,\"logo_path\":\"/AqUAfMC270bGGK09Nh3mycwT1hY.png\",\"name\":\"Netflix Animation\",\"origin_country\":\"US\"},{\"id\":145174,\"logo_path\":null,\"name\":\"Netflix International Pictures\",\"origin_country\":\"US\"},{\"id\":192478,\"logo_path\":null,\"name\":\"Netflix Anime Creators' Base\",\"origin_country\":\"JP\"}],\"total_pages\":1,\"total_results\":8}"
+        }
+      },
+      "recorded_at": "Fri, 15 Sep 2023 19:04:06 GMT"
+    }
+  ],
+  "recorded_with": "VCR 6.2.0"
+}

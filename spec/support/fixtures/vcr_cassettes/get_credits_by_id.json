@@ -1,0 +1,91 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://api.themoviedb.org/3/tv/66573/credits?api_key=<API_KEY>",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v2.7.4"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json;charset=utf-8"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Date": [
+            "Fri, 15 Sep 2023 19:11:12 GMT"
+          ],
+          "Server": [
+            "openresty"
+          ],
+          "Cache-Control": [
+            "public, max-age=24406"
+          ],
+          "X-Memc": [
+            "HIT"
+          ],
+          "X-Memc-Key": [
+            "0aa28c91cb28bbb29bd3b1537a3f882a"
+          ],
+          "X-Memc-Age": [
+            "14378"
+          ],
+          "X-Memc-Expires": [
+            "8073"
+          ],
+          "Etag": [
+            "W/\"4c4e8177b04acd5a98bdadc5e0b6b7f3\""
+          ],
+          "Vary": [
+            "Accept-Encoding",
+            "Origin"
+          ],
+          "X-Cache": [
+            "Miss from cloudfront"
+          ],
+          "Via": [
+            "1.1 619f2eec0ea05d2ce0279df117eb9a0c.cloudfront.net (CloudFront)"
+          ],
+          "X-Amz-Cf-Pop": [
+            "JFK52-P1"
+          ],
+          "Alt-Svc": [
+            "h3=\":443\"; ma=86400"
+          ],
+          "X-Amz-Cf-Id": [
+            "-znjHgAA6HVg6ynQ7JRSgjDTGaXWDE48Z23WQaDxIVfcsNAhLb6OEg=="
+          ]
+        },
+        "body": {
+          "encoding": "ASCII-8BIT",
+          "string": "{\"cast\":[{\"adult\":false,\"gender\":1,\"id\":40462,\"known_for_department\":\"Acting\",\"name\":\"Kristen Bell\",\"original_name\":\"Kristen Bell\",\"popularity\":21.653,\"profile_path\":\"/rP74dJXl7EjinGM0shQtUOlH5s2.jpg\",\"character\":\"Eleanor Shellstrop\",\"credit_id\":\"574315adc3a3685342000ace\",\"order\":0},{\"adult\":false,\"gender\":2,\"id\":12836,\"known_for_department\":\"Acting\",\"name\":\"Ted Danson\",\"original_name\":\"Ted Danson\",\"popularity\":13.901,\"profile_path\":\"/2QUEYVhrKbOkRKeFEUnc5sJby6a.jpg\",\"character\":\"Michael\",\"credit_id\":\"574315a6c3a36852d100097d\",\"order\":1},{\"adult\":false,\"gender\":2,\"id\":1410478,\"known_for_department\":\"Acting\",\"name\":\"William Jackson Harper\",\"original_name\":\"William Jackson Harper\",\"popularity\":13.073,\"profile_path\":\"/5Oy037YttIweiqNGaErkalNmH0G.jpg\",\"character\":\"Chidi Anagonye\",\"credit_id\":\"57d3020dc3a3681ffa000528\",\"order\":2},{\"adult\":false,\"gender\":1,\"id\":1624816,\"known_for_department\":\"Acting\",\"name\":\"Jameela Jamil\",\"original_name\":\"Jameela Jamil\",\"popularity\":11.114,\"profile_path\":\"/1hqmlYXdSDNbcjuCW0LwPaTWJmO.jpg\",\"character\":\"Tahani Al-Jamil\",\"credit_id\":\"5743159ec3a36868e40020d4\",\"order\":3},{\"adult\":false,\"gender\":2,\"id\":1368795,\"known_for_department\":\"Acting\",\"name\":\"Manny Jacinto\",\"original_name\":\"Manny Jacinto\",\"popularity\":14.603,\"profile_path\":\"/cjkZzaVR5StB4fqnl58NAOSsH0o.jpg\",\"character\":\"Jason Mendoza\",\"credit_id\":\"5809673d925141378a002432\",\"order\":4},{\"adult\":false,\"gender\":1,\"id\":1561264,\"known_for_department\":\"Acting\",\"name\":\"D'Arcy Carden\",\"original_name\":\"D'Arcy Carden\",\"popularity\":8.553,\"profile_path\":\"/bizw9YGOniYz64X5pf8EwafAVLO.jpg\",\"character\":\"Janet\",\"credit_id\":\"57d3022cc3a3681ffe000544\",\"order\":5}],\"crew\":[{\"adult\":false,\"gender\":1,\"id\":1355653,\"known_for_department\":\"Writing\",\"name\":\"Megan Amram\",\"original_name\":\"Megan Amram\",\"popularity\":1.576,\"profile_path\":\"/yk9aErnVjuAUZ25j45i05UrWzp5.jpg\",\"credit_id\":\"5d98fdc530f79c002a4a99f8\",\"department\":\"Production\",\"job\":\"Co-Executive Producer\"},{\"adult\":false,\"gender\":2,\"id\":47506,\"known_for_department\":\"Writing\",\"name\":\"Drew Goddard\",\"original_name\":\"Drew Goddard\",\"popularity\":10.82,\"profile_path\":\"/rcxxyIGDgPkXVgAQb9LLXfR89pv.jpg\",\"credit_id\":\"58855cd8925141045402752a\",\"department\":\"Production\",\"job\":\"Executive Producer\"}],\"id\":66573}"
+        }
+      },
+      "recorded_at": "Fri, 15 Sep 2023 19:11:12 GMT"
+    }
+  ],
+  "recorded_with": "VCR 6.2.0"
+}

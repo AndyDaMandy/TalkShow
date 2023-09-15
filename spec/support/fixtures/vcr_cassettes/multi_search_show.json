@@ -1,0 +1,91 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://api.themoviedb.org/3/search/multi?api_key=<API_KEY>&query=The%20Good%20Place",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v2.7.4"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json;charset=utf-8"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Date": [
+            "Fri, 15 Sep 2023 19:13:43 GMT"
+          ],
+          "Server": [
+            "openresty"
+          ],
+          "Cache-Control": [
+            "public, max-age=25707"
+          ],
+          "X-Memc": [
+            "MISS, STORE"
+          ],
+          "X-Memc-Key": [
+            "7f303b92bb4e9ed352c4096ad5ef1777"
+          ],
+          "X-Memc-Age": [
+            "0"
+          ],
+          "X-Memc-Expires": [
+            "25707"
+          ],
+          "Etag": [
+            "W/\"4a194d20a0224ba9a14252189499aefd\""
+          ],
+          "Vary": [
+            "Accept-Encoding",
+            "Origin"
+          ],
+          "X-Cache": [
+            "Miss from cloudfront"
+          ],
+          "Via": [
+            "1.1 f5b6caeff9422ffe5c739ff6cf167922.cloudfront.net (CloudFront)"
+          ],
+          "X-Amz-Cf-Pop": [
+            "JFK52-P1"
+          ],
+          "Alt-Svc": [
+            "h3=\":443\"; ma=86400"
+          ],
+          "X-Amz-Cf-Id": [
+            "JjCX2f3GlkQ37Ao8QBx-xh9OhrjRqxO4nFwyfssGWNIX9lhAzjkz6Q=="
+          ]
+        },
+        "body": {
+          "encoding": "ASCII-8BIT",
+          "string": "{\"page\":1,\"results\":[{\"adult\":false,\"backdrop_path\":\"/tZmlWeFEMvxrjJhBJJcLNXpSRiG.jpg\",\"id\":66573,\"name\":\"The Good Place\",\"original_language\":\"en\",\"original_name\":\"The Good Place\",\"overview\":\"Eleanor Shellstrop, an ordinary woman who, through an extraordinary string of events, enters the afterlife where she comes to realize that she hasn't been a very good person. With the help of her wise afterlife mentor, she's determined to shed her old way of living and discover the awesome (or at least the pretty good) person within.\",\"poster_path\":\"/eFV0O3u0CbVdhEYIozea4iZRn3O.jpg\",\"media_type\":\"tv\",\"genre_ids\":[10765,35],\"popularity\":86.906,\"first_air_date\":\"2016-09-19\",\"vote_average\":8.0,\"vote_count\":1300,\"origin_country\":[\"US\"]},{\"adult\":false,\"backdrop_path\":null,\"id\":319165,\"title\":\"The place is good!\",\"original_language\":\"fr\",\"original_title\":\"La place est bonne!\",\"overview\":\"A maid applies to a good position at the Dutilleul's, but she wouldn't know how good it was to be until people starts taking her for the lady of the house...\",\"poster_path\":\"/coZfDIyEJLFNvYox9hjdsp2EdcO.jpg\",\"media_type\":\"movie\",\"genre_ids\":[35],\"popularity\":0.6,\"release_date\":\"1930-12-31\",\"video\":false,\"vote_average\":0.0,\"vote_count\":0},{\"adult\":false,\"backdrop_path\":\"/dw773k6iva4sQjEnNjiBFAOUJxH.jpg\",\"id\":807068,\"title\":\"The Paley Center Salutes The Good Place\",\"original_language\":\"en\",\"original_title\":\"The Paley Center Salutes The Good Place\",\"overview\":\"In anticipation and celebration of the fourth and final season of NBC’s critically applauded and Emmy Award-nominated comedy, the network and The Paley Center for Media are collaborating on the hourlong special The Paley Center Salutes The Good Place on NBC on Thursday, Sept. 19 at 9:00 pm ET/PT.  Comprised of the best moments, hilarity, and wit from the show’s first three seasons, The Paley Center Salutes The Good Place will feature interviews with the show’s stars—Ted Danson, Kristen Bell, William Jackson Harper, Manny Jacinto, and D’Arcy Carden—as well as with creator Michael Schur. In addition, the show will offer rarely seen behind-the-scenes footage.\",\"poster_path\":\"/hpbq7Th9mlt17KnbPLjzRfJhDwl.jpg\",\"media_type\":\"movie\",\"genre_ids\":[99],\"popularity\":3.842,\"release_date\":\"2019-09-19\",\"video\":false,\"vote_average\":7.7,\"vote_count\":5},{\"adult\":false,\"backdrop_path\":null,\"id\":1147753,\"title\":\"A Good Place\",\"original_language\":\"de\",\"original_title\":\"Ein schöner Ort\",\"overview\":\"Margarita and Güte live in an unhealthy and stagnant environment that they can neither leave nor change. Meanwhile, the radio broadcasts messages and the world awaits the launch of the spacecraft that will take humans to the edge of the solar system. When Maria falls ill, Margarita persuades Güte to do something, but they fail and become separated until they realize what the real hurdle is.\",\"poster_path\":\"/wx55XY8NYVsqZHNk05UFr8Hbw0a.jpg\",\"media_type\":\"movie\",\"genre_ids\":[18],\"popularity\":1.176,\"release_date\":\"2023-08-09\",\"video\":false,\"vote_average\":0.0,\"vote_count\":0},{\"adult\":false,\"backdrop_path\":null,\"id\":291118,\"title\":\"In the Gutter and Other Good Places\",\"original_language\":\"en\",\"original_title\":\"In the Gutter and Other Good Places\",\"overview\":\"In the gutter and other good places The award winning film documentary In the gutter and other good places by Christine Richey is a multi-spectral view of three Calgary dumpster diving bottle pickers. The film traverses the ordinarily drawn stereotype of the homeless \\\"pickers\\\" of Calgary, and provides another compassionate standpoint on the choices and circumstances that have embodied their current predicament. Richey selects three very different street people for her story all with their unique backgrounds. Challenging assumptions about street people and their image to society, we are introduced first of all\",\"poster_path\":\"/8rvI1Fy1dwKv3xVF5EJl3tIPgHq.jpg\",\"media_type\":\"movie\",\"genre_ids\":[99],\"popularity\":0.6,\"release_date\":\"1993-09-07\",\"video\":false,\"vote_average\":0.0,\"vote_count\":0}],\"total_pages\":1,\"total_results\":5}"
+        }
+      },
+      "recorded_at": "Fri, 15 Sep 2023 19:13:43 GMT"
+    }
+  ],
+  "recorded_with": "VCR 6.2.0"
+}
