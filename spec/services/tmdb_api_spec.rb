@@ -4,7 +4,6 @@ require 'rails_helper'
 
 RSpec.describe 'TMDB API Testing' do
 
-
   describe '#get_recent_shows' do
     it 'it gets recent shows via get_recent_Shows' do
       # stub_request(:get, "https://api.themoviedb.org/3/trending/tv/week?api_key=#{ENV['TMDB_API']}")
@@ -34,10 +33,11 @@ RSpec.describe 'TMDB API Testing' do
   end
 
   it 'gets the show by title via get_show_by_title' do
-    hash = TmdbService.new
-    show = hash.get_show_by_title('The Good Place')
-    puts show
-    expect(show[0]['name']).to eq('The Good Place')
+    VCR.use_cassette('the_good_place') do
+      hash = TmdbService.new
+      show = hash.get_show_by_title('The Good Place')
+      expect(show[0]['name']).to eq('The Good Place')
+    end
   end
 
   it 'gets the show by streaming service via get_shows_by_streaming_service' do

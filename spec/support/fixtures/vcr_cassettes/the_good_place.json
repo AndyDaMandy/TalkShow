@@ -1,0 +1,91 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "get",
+        "uri": "https://api.themoviedb.org/3/search/tv?api_key=<API_KEY>&query=The%20Good%20Place",
+        "body": {
+          "encoding": "US-ASCII",
+          "string": ""
+        },
+        "headers": {
+          "User-Agent": [
+            "Faraday v2.7.4"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json;charset=utf-8"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Date": [
+            "Fri, 15 Sep 2023 14:19:14 GMT"
+          ],
+          "Server": [
+            "openresty"
+          ],
+          "Cache-Control": [
+            "public, max-age=28329"
+          ],
+          "X-Memc": [
+            "HIT"
+          ],
+          "X-Memc-Key": [
+            "dac7ddbd03f72beb046f593c8f3611ac"
+          ],
+          "X-Memc-Age": [
+            "4046"
+          ],
+          "X-Memc-Expires": [
+            "23209"
+          ],
+          "Etag": [
+            "W/\"5f550088c5fb1bc048350539dc30864d\""
+          ],
+          "Vary": [
+            "Accept-Encoding",
+            "Origin"
+          ],
+          "X-Cache": [
+            "Miss from cloudfront"
+          ],
+          "Via": [
+            "1.1 fe705b44d5a5a2d7d6e73595ceeca2e2.cloudfront.net (CloudFront)"
+          ],
+          "X-Amz-Cf-Pop": [
+            "JFK50-P7"
+          ],
+          "Alt-Svc": [
+            "h3=\":443\"; ma=86400"
+          ],
+          "X-Amz-Cf-Id": [
+            "4HrjlRaTSx5diofbea4ZLdDfYXgpobRBX5AcxDg6IHMczoh9zq9mpw=="
+          ]
+        },
+        "body": {
+          "encoding": "ASCII-8BIT",
+          "string": "{\"page\":1,\"results\":[{\"adult\":false,\"backdrop_path\":\"/tZmlWeFEMvxrjJhBJJcLNXpSRiG.jpg\",\"genre_ids\":[10765,35],\"id\":66573,\"origin_country\":[\"US\"],\"original_language\":\"en\",\"original_name\":\"The Good Place\",\"overview\":\"Eleanor Shellstrop, an ordinary woman who, through an extraordinary string of events, enters the afterlife where she comes to realize that she hasn't been a very good person. With the help of her wise afterlife mentor, she's determined to shed her old way of living and discover the awesome (or at least the pretty good) person within.\",\"popularity\":86.906,\"poster_path\":\"/eFV0O3u0CbVdhEYIozea4iZRn3O.jpg\",\"first_air_date\":\"2016-09-19\",\"name\":\"The Good Place\",\"vote_average\":8.0,\"vote_count\":1300}],\"total_pages\":1,\"total_results\":1}"
+        }
+      },
+      "recorded_at": "Fri, 15 Sep 2023 14:19:14 GMT"
+    }
+  ],
+  "recorded_with": "VCR 6.2.0"
+}
